@@ -1,0 +1,7 @@
+﻿/// <reference path="jquery.js" />
+
+
+function getValue(id) {
+    var inputKey = "#" + id;
+    return $(inputKey).val();
+}

@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+namespace Atlas.Efes.Core
+{
+    public class CertManager
+    {
+        private X509Certificate2 _certificate;
+        public X509Certificate2 Certificate
+        {
+            get
+            {
+                X509Store store = new X509Store(StoreLocation.CurrentUser);
+                store.Open(OpenFlags.ReadOnly);
+
+                X509Certificate2Collection certCollection = store.Certificates;
+                return certCollection[0];
+            }
+        }
+    }
+}

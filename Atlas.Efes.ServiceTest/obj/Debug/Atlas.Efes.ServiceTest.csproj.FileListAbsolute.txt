@@ -1,0 +1,13 @@
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\obj\Debug\Atlas.Efes.ServiceTest.csprojResolveAssemblyReference.cache
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.ServiceTest.exe.config
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.ServiceTest.exe
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.ServiceTest.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.Core.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.Engine.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Ionic.Zip.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.Common.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.Core.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.Engine.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\bin\Debug\Atlas.Efes.Common.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\obj\Debug\Atlas.Efes.ServiceTest.exe
+D:\Project\Atlas.Efes\Atlas.Efes.ServiceTest\obj\Debug\Atlas.Efes.ServiceTest.pdb

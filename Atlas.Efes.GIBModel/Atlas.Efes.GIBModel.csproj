@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FF52F88-B4B1-4764-9A60-23081E2A53BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlas.Efes.GIBModel</RootNamespace>
+    <AssemblyName>Atlas.Efes.GIBModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountingCustomerPartyInfo.cs" />
+    <Compile Include="AccountingSupplierPartyInfo.cs" />
+    <Compile Include="AdditionalDocumentReferenceInfo.cs" />
+    <Compile Include="AllowanceChargeInfo.cs" />
+    <Compile Include="AmountContainerInfo.cs" />
+    <Compile Include="ApplicationResponseInfo.cs" />
+    <Compile Include="AttachmentInfo.cs" />
+    <Compile Include="BasePropertyChanged.cs" />
+    <Compile Include="ContactIndicatorInfo.cs" />
+    <Compile Include="ContactInformation.cs" />
+    <Compile Include="CountryIndicatorInfo.cs" />
+    <Compile Include="DigitalSignatureAttachmentInfo.cs" />
+    <Compile Include="DocumentCurrencyCodeInfo.cs" />
+    <Compile Include="DocumentIdentificationInfo.cs" />
+    <Compile Include="DocumentIdentifierInfo.cs" />
+    <Compile Include="DocumentReferenceInfo.cs" />
+    <Compile Include="DocumentResponseInfo.cs" />
+    <Compile Include="ElementListInfo.cs" />
+    <Compile Include="ElementsInfo.cs" />
+    <Compile Include="EmbeddedDocumentBinaryObjectInfo.cs" />
+    <Compile Include="ExchangeRateContainerInfo.cs" />
+    <Compile Include="ExtensionContentInfo.cs" />
+    <Compile Include="ExternalReferenceInfo.cs" />
+    <Compile Include="IDContainerInfo.cs" />
+    <Compile Include="InvoiceInfo.cs" />
+    <Compile Include="InvoiceLineInfo.cs" />
+    <Compile Include="ItemInfo.cs" />
+    <Compile Include="LegalMonetaryTotalInfo.cs" />
+    <Compile Include="LineReferenceInfo.cs" />
+    <Compile Include="LineResponseInfo.cs" />
+    <Compile Include="PackageInfo.cs" />
+    <Compile Include="PartyIdentificationInfo.cs" />
+    <Compile Include="PartyInfo.cs" />
+    <Compile Include="PartyNameInfo.cs" />
+    <Compile Include="PartyTaxSchemeInfo.cs" />
+    <Compile Include="PayeeFinancialAccountInfo.cs" />
+    <Compile Include="PaymentAlternativeExchangeRateInfo.cs" />
+    <Compile Include="PaymentExchangeRateInfo.cs" />
+    <Compile Include="PaymentMeansInfo.cs" />
+    <Compile Include="PaymentTermsInfo.cs" />
+    <Compile Include="PersonInfo.cs" />
+    <Compile Include="PostalAddressInfo.cs" />
+    <Compile Include="PriceExchangeRateInfo.cs" />
+    <Compile Include="PriceInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiverInfo.cs" />
+    <Compile Include="ReceiverPartyInfo.cs" />
+    <Compile Include="ResponseInfo.cs" />
+    <Compile Include="SenderInfo.cs" />
+    <Compile Include="SenderPartyInfo.cs" />
+    <Compile Include="ServiceProxy\EFatura.cs" />
+    <Compile Include="SignatoryPartyInfo.cs" />
+    <Compile Include="SignatureInfo.cs" />
+    <Compile Include="StandardBusinessDocumentHeaderInfo.cs" />
+    <Compile Include="StandardBusinessDocumentInfo.cs" />
+    <Compile Include="TaxCategoryInfo.cs" />
+    <Compile Include="TaxExchangeRateInfo.cs" />
+    <Compile Include="TaxSchemeInfo.cs" />
+    <Compile Include="TaxSubTotalInfo.cs" />
+    <Compile Include="TaxTotalInfo.cs" />
+    <Compile Include="UBLExtensionInfo.cs" />
+    <Compile Include="UBLExtensionsInfo.cs" />
+    <Compile Include="UnitCodeContainerInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sh:StandardBusinessDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ef="http://www.efatura.gov.tr/package-namespace" xsi:schemaLocation="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader PackageProxy_1_2.xsd" xmlns:sh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+  <sh:StandardBusinessDocumentHeader>
+    <sh:HeaderVersion>1.0</sh:HeaderVersion>
+    <sh:Sender>
+      <sh:Identifier>urn:mail:defaultgb@atlasyazilim.com.tr</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Atlas Yazılım TEST Gonderici Birim</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>1111113361</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Sender>
+    <sh:Receiver>
+      <sh:Identifier>urn:mail:defaultpk@atlasyazilim.com.tr</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Atlas Yazılım Posta Kutusu</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>1020409972</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Receiver>
+    <sh:DocumentIdentification>
+      <sh:Standard>UBLTR</sh:Standard>
+      <sh:TypeVersion>1.2</sh:TypeVersion>
+      <sh:InstanceIdentifier>95830F30-1D59-4F84-AC7A-18874A69E4F5</sh:InstanceIdentifier>
+      <sh:Type>SENDERENVELOPE</sh:Type>
+      <sh:CreationDateAndTime>2015-11-06T11:35:03</sh:CreationDateAndTime>
+    </sh:DocumentIdentification>
+  </sh:StandardBusinessDocumentHeader>
+  <ef:Package>
+    <Elements>
+      <ElementType>INVOICE</ElementType>
+      <ElementCount>1</ElementCount>
+      <ElementList>
+      </ElementList>
+    </Elements>
+  </ef:Package>
+</sh:StandardBusinessDocument>

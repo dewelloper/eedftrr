@@ -1,0 +1,65 @@
+﻿using Atlas.Efes.OracleClient;
+using Atlas.Efes.OracleClient.OracleServiceProxy;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Atlas.Efes.DataContext
+{
+    public class EnvelopeLogDataContext : BaseDataContext
+    {
+        private static readonly EnvelopeLogDataContext _instance = new EnvelopeLogDataContext();
+        public static EnvelopeLogDataContext Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+
+        public void EnvelopeLog(string instanceIdentifier,
+                                      string workerType, string envelopeType,
+                                      string message, string applicationCode)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<EnvelopeLog>");
+            builder.AppendFormat("<InstanceIdentifier>{0}</InstanceIdentifier>", instanceIdentifier);
+            builder.AppendFormat("<WorkerType>{0}</WorkerType>", workerType);
+            builder.AppendFormat("<Message>{0}</Message>", message);
+            builder.AppendFormat("<EnvelopeType>{0}</EnvelopeType>", envelopeType);
+            builder.AppendFormat("<ApplicationCode>{0}</ApplicationCode>", applicationCode);
+            builder.Append("</EnvelopeLog>");
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_XML", builder.ToString());
+
+            using (var client = new OracleDataClient())
+            {
+                this.ExecuteOracleClient((param) =>
+                {
+                    param = client.Execute("SP_SAVEENVELOPELOG", parameters, CreateOracleRefParameters());
+                });
+            }
+        }
+
+        public void LogDetails(string instanceIdentifier,string detailedMessage)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<LogDetail>");
+            builder.AppendFormat("<InstanceIdentifier>{0}</InstanceIdentifier>", instanceIdentifier);
+            builder.AppendFormat("<DetailedMessage>{0}</DetailedMessage>", detailedMessage);
+            builder.Append("</LogDetail>");
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_XML", builder.ToString());
+
+            using (var client = new OracleDataClient())
+            {
+                this.ExecuteOracleClient((param) =>
+                {
+                    param = client.Execute("SP_SAVEENVELOPELOGDETAIL", parameters, CreateOracleRefParameters());
+                });
+            }
+        }
+    }
+}

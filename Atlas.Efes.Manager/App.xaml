@@ -1,0 +1,9 @@
+﻿<Application x:Class="Atlas.Efes.Manager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <!--<ResourceDictionary Source="pack://application:,,,/Atlantis.Presentation.Common;component/Themes/WindowStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Atlantis.Presentation.Common;component/Themes/Skins/BureauBlue/Theme.xaml" />-->
+        <ResourceDictionary Source="Resources/AppStyles.xaml" />
+    </Application.Resources>
+</Application>

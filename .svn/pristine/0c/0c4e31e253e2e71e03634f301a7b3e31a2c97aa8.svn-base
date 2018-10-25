@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{AAE7018F-0681-495F-8A23-B5E7C808A933}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EC9A0997-EB10-485F-9B6E-97334377E9D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{2E39971F-EE7D-490A-B4FA-1386FD57CBBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Efes.Common", "Atlas.Efes.Data.Common\Atlas.Efes.Common.csproj", "{241653A9-E882-42F8-AA67-9B7A2B9E2AB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Efes.Core", "Atlas.Efes.Core\Atlas.Efes.Core.csproj", "{E4AECE01-6F2B-4AF8-AF77-5289D851307B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0BC8C264-A02A-4FF4-868E-4147518E6AE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Efes.GibClient", "Atlas.Efes.GibClient\Atlas.Efes.GibClient.csproj", "{7087F5D1-82E0-472B-9A0D-7C7DAF16A768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Efes.IntegrationServices", "Atlas.Efes.IntegrationServices\Atlas.Efes.IntegrationServices.csproj", "{B84022B2-A17E-48E5-8F37-2BBBE42A528A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portal", "Portal", "{0BD6A573-F75E-4B38-B1F1-A297D17638A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Efes.Portal", "Atlas.Efes.Portal\Atlas.Efes.Portal.csproj", "{A5EBCE65-F3B0-4208-B3EE-162A2E2B71A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atlas.Efes.Resources", "Atlas.Efes.Resources\Atlas.Efes.Resources.csproj", "{94D8E380-3C38-4D38-A73D-5578C7510B02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{241653A9-E882-42F8-AA67-9B7A2B9E2AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241653A9-E882-42F8-AA67-9B7A2B9E2AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241653A9-E882-42F8-AA67-9B7A2B9E2AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241653A9-E882-42F8-AA67-9B7A2B9E2AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4AECE01-6F2B-4AF8-AF77-5289D851307B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4AECE01-6F2B-4AF8-AF77-5289D851307B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4AECE01-6F2B-4AF8-AF77-5289D851307B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4AECE01-6F2B-4AF8-AF77-5289D851307B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7087F5D1-82E0-472B-9A0D-7C7DAF16A768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7087F5D1-82E0-472B-9A0D-7C7DAF16A768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7087F5D1-82E0-472B-9A0D-7C7DAF16A768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7087F5D1-82E0-472B-9A0D-7C7DAF16A768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84022B2-A17E-48E5-8F37-2BBBE42A528A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84022B2-A17E-48E5-8F37-2BBBE42A528A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84022B2-A17E-48E5-8F37-2BBBE42A528A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84022B2-A17E-48E5-8F37-2BBBE42A528A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5EBCE65-F3B0-4208-B3EE-162A2E2B71A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EBCE65-F3B0-4208-B3EE-162A2E2B71A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EBCE65-F3B0-4208-B3EE-162A2E2B71A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5EBCE65-F3B0-4208-B3EE-162A2E2B71A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D8E380-3C38-4D38-A73D-5578C7510B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D8E380-3C38-4D38-A73D-5578C7510B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D8E380-3C38-4D38-A73D-5578C7510B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D8E380-3C38-4D38-A73D-5578C7510B02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{241653A9-E882-42F8-AA67-9B7A2B9E2AB4} = {AAE7018F-0681-495F-8A23-B5E7C808A933}
+		{E4AECE01-6F2B-4AF8-AF77-5289D851307B} = {AAE7018F-0681-495F-8A23-B5E7C808A933}
+		{B84022B2-A17E-48E5-8F37-2BBBE42A528A} = {EC9A0997-EB10-485F-9B6E-97334377E9D4}
+		{7087F5D1-82E0-472B-9A0D-7C7DAF16A768} = {0BC8C264-A02A-4FF4-868E-4147518E6AE8}
+		{A5EBCE65-F3B0-4208-B3EE-162A2E2B71A7} = {0BD6A573-F75E-4B38-B1F1-A297D17638A4}
+		{94D8E380-3C38-4D38-A73D-5578C7510B02} = {0BD6A573-F75E-4B38-B1F1-A297D17638A4}
+	EndGlobalSection
+EndGlobal

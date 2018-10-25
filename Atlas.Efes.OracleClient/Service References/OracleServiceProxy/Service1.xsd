@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="creditCardInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clientIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cvv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="expMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="expYear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="holder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tckn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vkn" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="creditCardInfo" nillable="true" type="tns:creditCardInfo" />
+  <xs:complexType name="ArrayOfParams">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Params" nillable="true" type="tns:Params" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParams" nillable="true" type="tns:ArrayOfParams" />
+  <xs:complexType name="Params">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ParamName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParamType" type="xs:int" />
+      <xs:element minOccurs="0" name="ParamVal" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Params" nillable="true" type="tns:Params" />
+  <xs:complexType name="sessionInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="authKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="infoMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="paymentBank" type="xs:int" />
+      <xs:element minOccurs="0" name="salesMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="sessionInfo" nillable="true" type="tns:sessionInfo" />
+  <xs:complexType name="ServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="ResultSet" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceResult" nillable="true" type="tns:ServiceResult" />
+</xs:schema>

@@ -1,0 +1,255 @@
+﻿using Atlas.Efes.Common.Container;
+using Atlas.Efes.Common.Model;
+using Atlas.Efes.GIBModel;
+using Atlas.Efes.OracleClient;
+using Atlas.Efes.OracleClient.OracleServiceProxy;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace Atlas.Efes.DataContext
+{
+    public class PartyInfoDataContext : BaseDataContext
+    {
+        private static readonly PartyInfoDataContext _instance = new PartyInfoDataContext();
+        public static PartyInfoDataContext Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
+
+        public DatabaseResult<PartyInfo> GetCustomerByHeader(string username, string password)
+        {
+            DatabaseResult<PartyInfo> response = new DatabaseResult<PartyInfo>();
+
+            ServiceResult serviceResult = ExecuteServiceByHeader(username, password);
+
+            string errorMessage = string.Empty;
+            DataTable dataTable = GetDataResult(serviceResult, out errorMessage);
+
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                response.Result = CreateParty(dataTable.Rows[0]);
+                response.IsSuccess = true;
+            }
+            else
+            {
+                response.IsSuccess = false;
+                response.Result = null;
+                response.Message = errorMessage;
+            }
+
+            return response;
+        }
+
+        public DatabaseResult<PartyInfo> GetCustomerByApiKey(string apiKey)
+        {
+            DatabaseResult<PartyInfo> response = new DatabaseResult<PartyInfo>();
+
+            ServiceResult serviceResult = ExecuteServiceByApiKey(apiKey);
+
+            string errorMessage = string.Empty;
+            DataTable dataTable = GetDataResult(serviceResult, out errorMessage);
+
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                response.Result = CreateParty(dataTable.Rows[0]);
+                response.IsSuccess = true;
+            }
+            else
+            {
+                response.IsSuccess = false;
+                response.Result = null;
+                response.Message = errorMessage;
+            }
+
+            return response;
+        }
+
+        public DatabaseResult<PartyInfo> GetCustomerByIdentification(string identification)
+        {
+            DatabaseResult<PartyInfo> response = new DatabaseResult<PartyInfo>();
+
+            ServiceResult serviceResult = ExecuteServiceByIdentification(identification);
+
+            string errorMessage = string.Empty;
+            DataTable dataTable = GetDataResult(serviceResult, out errorMessage);
+
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                response.Result = CreateParty(dataTable.Rows[0]);
+                response.IsSuccess = true;
+            }
+            else
+            {
+                response.IsSuccess = false;
+                response.Result = null;
+                response.Message = errorMessage;
+            }
+
+            return response;
+        }
+
+        public DatabaseResult<GIBUserInfo> GetGibUserByIdentification(string identification, string tableName)
+        {
+            DatabaseResult<GIBUserInfo> result = new DatabaseResult<GIBUserInfo>();
+
+            ServiceResult serviceResult = ExecuteServiceByGibUser(identification, tableName);
+
+            string errorMessage = string.Empty;
+            DataTable dataTable = GetDataResult(serviceResult, out errorMessage);
+
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                var dataRow = dataTable.Rows[0];
+                GIBUserInfo userInfo = new GIBUserInfo();
+                userInfo.Address = dataRow.Get<string>("ADDRESS");
+                userInfo.Identification = dataRow.Get<string>("IDENTIFICATION");
+                userInfo.Title = dataRow.Get<string>("TITLE");
+                result.Result = userInfo;
+                result.IsSuccess = true;
+            }
+            else
+            {
+                result.IsSuccess = false;
+                result.Result = null;
+                result.Message = errorMessage;
+            }
+
+
+            return result;
+        }
+
+        private PartyInfo CreateParty(DataRow dataRow)
+        {
+            var partyInfo = new PartyInfo();
+            partyInfo.Contact = new ContactIndicatorInfo()
+            {
+                Telefax = dataRow.Get<string>("FAX"),
+                Telephone = dataRow.Get<string>("TELEPHONE"),
+                ElectronicMail = dataRow.Get<string>("EMAIL"),
+            };
+            var identificationInfo = new PartyIdentificationInfo();
+            partyInfo.PartyIdentifications = new List<PartyIdentificationInfo>();
+            identificationInfo.ID = new IDContainerInfo();
+            identificationInfo.ID.Value = dataRow.Get<string>("VKN_TCKN");
+            identificationInfo.ID.schemeID = dataRow.Get<int>("CUSTOMERTYPE") == 1 ? "VKN" : "TCKN";
+
+            partyInfo.PartyIdentifications.Add(identificationInfo);
+
+            if (!string.IsNullOrEmpty(dataRow.Get<string>("MERSISNO")))
+            {
+                identificationInfo = new PartyIdentificationInfo();
+                identificationInfo.ID = new IDContainerInfo();
+                identificationInfo.ID.Value = dataRow.Get<string>("MERSISNO");
+                identificationInfo.ID.schemeID = "MERSISNO";
+                partyInfo.PartyIdentifications.Add(identificationInfo);
+            }
+
+            /*
+            if (!string.IsNullOrEmpty(dataRow.Get<string>("TICARETSICILNO")))
+            {
+                partyInfo = new PartyIdentificationInfo();
+                partyInfo.ID = new IDContainerInfo();
+                partyInfo.ID.Value = dataRow.Get<string>("TICARETSICILNO");
+                partyInfo.ID.schemeID = "TICARETSICILNO";
+                customerPartyInfo.Party.PartyIdentifications.Add(partyInfo);
+            }
+             */
+
+            partyInfo.PostalAddress = new PostalAddressInfo()
+            {
+                BuildingName = dataRow.Get<string>("BUILDINGNAME"),
+                BuildingNumber = dataRow.Get<string>("BUILDINGNUMBER"),
+                Room = dataRow.Get<string>("DOORNUMBER"),
+                CityName = dataRow.Get<string>("CITY"),
+                CitySubdivisionName = dataRow.Get<string>("DISTRICT"),
+                Country = new CountryIndicatorInfo()
+                {
+                    Name = dataRow.Get<string>("COUNTRY"),
+                },
+                PostalZone = dataRow.Get<string>("POSTALCODE"),
+                Region = dataRow.Get<string>("REGION"),
+                StreetName = dataRow.Get<string>("STREET"),
+            };
+
+            partyInfo.PartyName = new PartyNameInfo();
+            partyInfo.PartyName.Name = dataRow.Get<string>("TITLE");
+
+            if (!string.IsNullOrEmpty(dataRow.Get<string>("TAXOFFICE")))
+            {
+                partyInfo.PartyTaxScheme = new PartyTaxSchemeInfo();
+                partyInfo.PartyTaxScheme.TaxScheme = new TaxSchemeInfo();
+                partyInfo.PartyTaxScheme.TaxScheme.Name = dataRow.Get<string>("TAXOFFICE");
+            }
+
+            partyInfo.WebsiteURI = dataRow.Get<string>("WEBSITE");
+            partyInfo.Alias = dataRow.Get<string>("SENDERUNITADDRESS");
+            return partyInfo;
+        }
+
+        private ServiceResult ExecuteServiceByHeader(string username, string password)
+        {
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_Username", username);
+            parameters.AddOracleParameters("P_Password", password);
+
+            ServiceResult serviceResult = null;
+            using (OracleDataClient client = new OracleClient.OracleDataClient())
+            {
+                serviceResult = client.Execute("SP_GETCUSTOMER_BY_HEADER", parameters, CreateOracleRefParameters());
+            }
+
+            return serviceResult;
+        }
+
+        private ServiceResult ExecuteServiceByIdentification(string identification)
+        {
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_IDENTIFICATION", identification);
+
+            ServiceResult serviceResult = null;
+            using (OracleDataClient client = new OracleClient.OracleDataClient())
+            {
+                serviceResult = client.Execute("SP_GETCUSTOMER_BY_VKNTCKN", parameters, CreateOracleRefParameters());
+            }
+
+            return serviceResult;
+        }
+
+
+        private ServiceResult ExecuteServiceByApiKey(string apiKey)
+        {
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_APIKEY", apiKey);
+
+            ServiceResult serviceResult = null;
+            using (OracleDataClient client = new OracleClient.OracleDataClient())
+            {
+                serviceResult = client.Execute("SP_GETCUSTOMER_BY_APIKEY", parameters, CreateOracleRefParameters());
+            }
+
+            return serviceResult;
+        }
+
+
+        private ServiceResult ExecuteServiceByGibUser(string identification, string tableName)
+        {
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_IDENTIFICATION", identification);
+            parameters.AddOracleParameters("P_TABLENAME", tableName);
+
+            ServiceResult serviceResult = null;
+            using (OracleDataClient client = new OracleClient.OracleDataClient())
+            {
+                serviceResult = client.Execute("SP_GET_GB_IDENTIFICATION", parameters, CreateOracleRefParameters());
+            }
+
+            return serviceResult;
+        }
+    }
+}

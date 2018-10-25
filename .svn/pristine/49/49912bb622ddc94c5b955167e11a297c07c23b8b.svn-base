@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace Atlas.Efes.Common.GibModel
+{
+    [DataContract]
+    public class Elements
+    {
+        public string ElementType { get; set; }
+        public int ElementCount { get; set; }
+
+        private List<ElementList> elementList;
+
+        [XmlElement("ElementList")]
+        public List<ElementList> ElementList
+        {
+            get
+            {
+                if (elementList == null)
+                {
+                    elementList = new List<ElementList>();
+                }
+                return elementList;
+            }
+            set { elementList = value; }
+        }
+
+    }
+}

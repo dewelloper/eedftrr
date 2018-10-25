@@ -1,0 +1,4 @@
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\bin\Release\Atlas.Efes.GIBModel.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\bin\Release\Atlas.Efes.GIBModel.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\obj\Release\Atlas.Efes.GIBModel.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\obj\Release\Atlas.Efes.GIBModel.pdb

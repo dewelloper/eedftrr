@@ -1,0 +1,8 @@
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\bin\Debug\Atlas.Efes.GIBModel.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\bin\Debug\Atlas.Efes.GIBModel.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\obj\Debug\Atlas.Efes.GIBModel.csprojResolveAssemblyReference.cache
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\obj\Debug\Atlas.Efes.GIBModel.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GIBModel\obj\Debug\Atlas.Efes.GIBModel.pdb
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GIBModel\obj\Debug\Atlas.Efes.GIBModel.csprojResolveAssemblyReference.cache
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GIBModel\obj\Debug\Atlas.Efes.GIBModel.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GIBModel\obj\Debug\Atlas.Efes.GIBModel.pdb

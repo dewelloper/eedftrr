@@ -1,0 +1,12 @@
+D:\Project\Atlas.Efes\Atlas.Efes.GibClient\bin\Debug\Atlas.Efes.GibClient.dll.config
+D:\Project\Atlas.Efes\Atlas.Efes.GibClient\bin\Debug\Atlas.Efes.GibClient.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GibClient\bin\Debug\Atlas.Efes.GibClient.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.GibClient\obj\Debug\Atlas.Efes.GibClient.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GibClient\obj\Debug\Atlas.Efes.GibClient.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.GibClient\obj\Debug\Atlas.Efes.GibClient.csprojResolveAssemblyReference.cache
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GibClient\bin\Debug\Atlas.Efes.GibClient.dll.config
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GibClient\bin\Debug\Atlas.Efes.GibClient.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GibClient\bin\Debug\Atlas.Efes.GibClient.pdb
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GibClient\obj\Debug\Atlas.Efes.GibClient.csprojResolveAssemblyReference.cache
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GibClient\obj\Debug\Atlas.Efes.GibClient.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.GibClient\obj\Debug\Atlas.Efes.GibClient.pdb

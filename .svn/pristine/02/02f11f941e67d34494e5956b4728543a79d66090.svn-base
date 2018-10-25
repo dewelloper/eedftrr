@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFService" />
+  <xs:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="CreditCardPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BankId" type="xs:int" />
+        <xs:element minOccurs="0" name="refNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="cardInfo" nillable="true" type="q1:creditCardInfo" />
+        <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="provisionCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreditCardPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreditCardPaymentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="provisionCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreditCardPaymentRefund">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BankId" type="xs:int" />
+        <xs:element minOccurs="0" name="refNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="cardInfo" nillable="true" type="q2:creditCardInfo" />
+        <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="provisionCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreditCardPaymentRefundResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreditCardPaymentRefundResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="errorMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="provisionCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAnyProcByParams">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="lstParams" nillable="true" type="q3:ArrayOfParams" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAnyProcByParamsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getAnyProcByParamsResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMultipleCursor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="lstParams" nillable="true" type="q4:ArrayOfParams" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cursors" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMultipleCursorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getMultipleCursorResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="lstParams" nillable="true" type="q6:ArrayOfParams" />
+        <xs:element minOccurs="0" name="cacheTime" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getReportResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDATA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoadSP_" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SelectSQL_" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PrimaryKeyColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PKID_" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDATAResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDATAResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServerInsUpd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TableName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SaveSP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PrimaryKeyColumn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PKVALUE" type="xs:int" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="parameters" nillable="true" type="q7:ArrayOfParams" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServerInsUpdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServerInsUpdResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAnyProcByNamelessParam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="lstParams" nillable="true" type="q8:ArrayOfParams" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAnyProcByNamelessParamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getAnyProcByNamelessParamResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="transactionApprover">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFService" name="affiliateApprover" nillable="true" type="q9:sessionInfo" />
+  <xs:element name="sessionInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="authKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="company" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="infoMail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="paymentBank" type="xs:int" />
+        <xs:element minOccurs="0" name="salesMail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="lstParams" nillable="true" type="q10:ArrayOfParams" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="GetServiceResultResult" nillable="true" type="q11:ServiceResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceResultMulti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="procName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="lstParams" nillable="true" type="q12:ArrayOfParams" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lstCursors" nillable="true" type="q13:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceResultMultiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WCFService" minOccurs="0" name="GetServiceResultMultiResult" nillable="true" type="q14:ServiceResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

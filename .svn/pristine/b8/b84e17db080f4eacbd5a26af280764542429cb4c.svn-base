@@ -1,0 +1,180 @@
+using System;
+using System.Xml;
+using System.Xml.Schema;
+using System.IO;
+using System.Xml.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace Atlas.Efes.Core
+{
+
+	public class XmlSchemaValidator
+	{
+		private bool isValidXml = true;
+        private string validationError = string.Empty;
+
+		public XmlSchemaValidator()
+		{
+			
+		}
+
+        private List<string> list = new List<string>();
+
+        public List<string> ErrorList
+        {
+            get { return list; }
+            set { list = value; }
+        }
+        
+
+		public String ValidationError
+		{
+			get
+			{
+                return this.validationError;
+			}
+			set
+			{
+				this.validationError = value;
+			}
+		}
+
+	
+		public bool IsValidXml
+		{
+			get
+			{
+				return this.isValidXml;
+			}
+		}
+
+		
+		private void ValidationCallBack(object sender, ValidationEventArgs args)
+		{	
+			isValidXml = false;
+			this.ValidationError = args.Message;
+
+            ErrorList.Add(this.ValidationError);
+		}  
+
+		public bool ValidXmlDoc(string xml, string schemaNamespace, string schemaUri)
+		{
+			try
+			{
+				// Is the xml string valid?
+				if(xml == null || xml.Length < 1)
+				{
+					return false;
+				}
+
+				StringReader srXml = new StringReader(xml);
+				return ValidXmlDoc(srXml, schemaNamespace, schemaUri);
+			}
+			catch(Exception ex)
+			{
+				this.ValidationError = ex.Message;
+				return false;
+			}
+		}
+
+		
+		public bool ValidXmlDoc(XmlDocument xml, string schemaNamespace, string schemaUri)
+		{
+			try
+			{
+				if(xml == null)
+				{
+					return false;
+				}
+
+				StringWriter sw = new StringWriter();
+				XmlTextWriter xw = new XmlTextWriter(sw);
+				xml.WriteTo(xw);
+				string strXml = sw.ToString();
+				StringReader srXml = new StringReader(strXml);
+				return ValidXmlDoc(srXml, schemaNamespace, schemaUri);
+			}
+			catch(Exception ex)
+			{
+				this.ValidationError = ex.Message;
+				return false;
+			}
+		}
+	
+	
+		public bool ValidXmlDoc(StringReader xml, string schemaNamespace, string schemaUri)
+		{
+			// Continue?
+			if(xml == null || schemaNamespace == null || schemaUri == null)
+			{
+				return false;
+			}
+
+			isValidXml = true;
+			XmlValidatingReader vr;
+			XmlTextReader tr;
+			XmlSchemaCollection schemaCol = new XmlSchemaCollection();
+
+            XmlReader xmlReader = XmlReader.Create(schemaUri);
+            schemaCol.Add(schemaNamespace, xmlReader);
+
+            /*
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\UBL-CommonAggregateComponents-2.1.xsd");
+            schemaCol.Add("urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2", xmlReader);
+
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\UBL-CommonExtensionComponents-2.1.xsd");
+            schemaCol.Add("urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2", xmlReader);
+
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\UBL-CommonBasicComponents-2.1.xsd");
+            schemaCol.Add("urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2", xmlReader);
+
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\UBL-QualifiedDataTypes-2.1.xsd");
+            schemaCol.Add("urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2", xmlReader);
+
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\UBL-UnqualifiedDataTypes-2.1.xsd");
+            schemaCol.Add("urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2", xmlReader);
+
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\UBL-CoreComponentParameters-2.1.xsd");
+            schemaCol.Add("urn:un:unece:uncefact:documentation:2", xmlReader);
+
+            xmlReader = XmlReader.Create(@"D:\Project\Atlas.Efes\Atlas.Efes.IntegrationService\bin\common\CCTS_CCT_SchemaModule-2.1.xsd");
+            schemaCol.Add("urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2", xmlReader);
+            */
+
+           
+            
+			try 
+			{ 
+				tr = new XmlTextReader(xml);
+				vr = new XmlValidatingReader(tr);
+				vr.ValidationType = ValidationType.Auto;
+				
+                if(schemaCol != null)
+				{
+					vr.Schemas.Add(schemaCol);
+				}
+				
+                vr.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+				
+                while(vr.Read()) 
+				{ 
+				} 
+				
+				vr.Close(); 
+				
+				return isValidXml;
+			} 
+			catch(Exception ex) 
+			{ 
+				this.ValidationError = ex.Message;
+				return false; 
+			} 
+			finally
+			{
+				vr = null;
+				tr = null;
+			}
+		}
+	}
+}

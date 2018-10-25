@@ -1,0 +1,105 @@
+﻿using Atlas.Efes.Common.ServiceModel;
+using Atlas.Efes.GibIntegrationService;
+using Atlas.Efes.GibIntegrationService.GIBServiceProxy;
+using Atlas.Efes.SenderIntegrationService;
+using System;
+using System.Xml;
+
+namespace Atlas.Efes.SenderIntegrationService
+{
+
+    public class SenderIntegrationService : ISenderIntegrationService
+    {
+        public DocumentResponse SendDocument(DocumentInfo documentInfo)
+        {
+            DocumentResponse documentResult = new DocumentResponse();
+
+            documentReturnType response = null;
+
+            try
+            {
+                GIBIntegrationClient instance = GIBIntegrationClient.CreateInstance();
+
+                var documentType = new documentType()
+                {
+                    binaryData = new base64Binary()
+                    {
+                        contentType = "application/zip",
+                        Value = documentInfo.BinaryData,
+                    },
+                    fileName = documentInfo.FileName,
+                    hash = documentInfo.Hash,
+                };
+
+                response = instance.SendDocument(documentType);
+
+                if (response != null)
+                {
+                    documentResult.Hash = response.hash;
+                    documentResult.Message = response.msg;
+                }
+            }
+            catch (Exception ex)
+            {
+                documentResult.Hash = null;
+                documentResult.Message = ex.InnerException == null ? ex.Message : ex.InnerException.Message;
+            }
+
+            return documentResult;
+        }
+
+        public ApplicationResponse GetApplicationResponse(string instanceIdentifier)
+        {
+            GIBIntegrationClient instance = GIBIntegrationClient.CreateInstance();
+            string result = string.Empty;
+            getAppRespRequestType request = new getAppRespRequestType()
+            {
+                instanceIdentifier = instanceIdentifier,
+            };
+            getAppRespResponseType response = null;
+            string responseXml = string.Empty;
+            ApplicationResponse applicationResponse = new ApplicationResponse();
+
+            try
+            {
+                GIBIntegrationClient client = GIBIntegrationClient.CreateInstance();
+                response = client.GetApplicationResponse(request);
+
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(responseXml);
+                XmlNamespaceManager namespaces = new XmlNamespaceManager(doc.NameTable);
+                namespaces.AddNamespace("sh", "http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader");
+                namespaces.AddNamespace("ef", "http://www.efatura.gov.tr/package-namespace");
+
+                var elementListNode = doc.SelectSingleNode("//sh:StandardBusinessDocument/ef:Package/Elements/ElementList", namespaces);
+                var applicationXml = elementListNode.InnerXml;
+                doc.LoadXml(applicationXml);
+                namespaces = new XmlNamespaceManager(doc.NameTable);
+                namespaces.AddNamespace("cac", "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2");
+                XmlNodeList responseNode = doc.SelectNodes("//cac:DocumentResponse/cac:LineResponse/cac:Response", namespaces);
+
+                string applicationCode = responseNode[0].ChildNodes[2].InnerText;
+                string description = responseNode[0].ChildNodes[3].InnerText;
+                applicationResponse.ApplicationCode = applicationCode;
+                applicationResponse.Description = description;
+                applicationResponse.ResponseXml = response.applicationResponse;
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    applicationResponse.Description = ex.InnerException.Message;
+                }
+                else
+                {
+                    applicationResponse.Description = ex.Message;
+                }
+
+                applicationResponse.ApplicationCode = "ERR-1";
+            }
+
+
+            return applicationResponse;
+        }
+    }
+}

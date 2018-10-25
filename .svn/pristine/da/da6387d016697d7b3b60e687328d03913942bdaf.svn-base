@@ -1,0 +1,17 @@
+﻿using Atlas.Efes.Common.Container;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Serialization;
+
+namespace Atlas.Efes.Common.GibModel
+{
+    public class TaxTotal
+    {
+        [XmlElement(ElementName = "TaxAmount", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+        public AmountContainer TaxAmount { get; set; }
+
+        public TaxSubtotal TaxSubtotal { get; set; }
+    }
+}

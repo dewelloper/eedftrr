@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Linq;
+
+namespace Atlas.Efes.Core.Extensions
+{
+    public static class XmlExtensions
+    {
+        public static string GetNodeValueByName(this XmlNode node, string key)
+        {
+            string result = null;
+            var value = node[key];
+
+            if (value != null)
+            {
+                result = value.InnerText;
+            }
+
+            return result;
+        }
+
+        public static string GetSingleNodeXml(this XmlNode node, string xPath, XmlNamespaceManager manager, bool isInner = true)
+        {
+            if (isInner)
+            {
+                return node.SelectSingleNode(xPath, manager).InnerXml;
+            }
+            else
+            {
+                return node.SelectSingleNode(xPath, manager).OuterXml;
+            }
+
+        }
+
+        public static XmlNode GetSingleNode(this XmlNode node, string xPath, XmlNamespaceManager manager = null)
+        {
+            if (manager == null)
+            {
+               
+            }
+            return node.SelectSingleNode(xPath, manager);
+        }
+
+        public static XmlNodeList GetNodes(this XmlNode node, string xPath, XmlNamespaceManager manager)
+        {
+            return node.SelectNodes(xPath, manager);
+        }
+
+        public static List<string> GetMutliNodes(this XmlNode node, string xPath, XmlNamespaceManager manager)
+        {
+            List<string> list = new List<string>();
+            var m = node.SelectNodes(xPath, manager);
+            node.SelectNodes(xPath, manager).OfType<XmlElement>().ToList().ForEach((f) =>
+            {
+                list.Add(f.InnerText);
+            });
+
+            return list;
+        }
+
+
+        public static XmlDocument ToXmlDocument(this XDocument xDocument)
+        {
+            var xmlDocument = new XmlDocument();
+            using (var xmlReader = xDocument.CreateReader())
+            {
+                xmlDocument.Load(xmlReader);
+            }
+            return xmlDocument;
+        }
+
+    }
+}

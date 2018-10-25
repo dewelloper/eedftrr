@@ -1,0 +1,17 @@
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.ReceiverIntegrationService.dll.config
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.ReceiverIntegrationService.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.ReceiverIntegrationService.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.Common.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.Core.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.DataContext.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Ionic.Zip.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.OracleClient.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.Common.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.Core.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.DataContext.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.OracleClient.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\obj\Release\Atlas.Efes.ReceiverIntegrationService.csprojResolveAssemblyReference.cache
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\obj\Release\Atlas.Efes.ReceiverIntegrationService.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\obj\Release\Atlas.Efes.ReceiverIntegrationService.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.Engine.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverIntegrationService\bin\Atlas.Efes.Engine.pdb

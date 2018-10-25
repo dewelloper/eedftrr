@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace Atlas.Efes.Common.Container
+{
+    [XmlRoot(ElementName = "ID", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")]
+    public class IDContainerInfo 
+    {
+        [XmlText]
+        public string Value { get; set; }
+
+        [XmlAttribute("schemeID")]
+        public string schemeID = "VKN_TCKN";
+
+    }
+}

@@ -1,0 +1,41 @@
+﻿/// <reference path="jquery.js" />
+
+$(document).ajaxStart(function ()
+{
+    startLoader();
+});
+
+function startLoader()
+{
+    $("#ajaxLoadingDiv").css('display', 'block');
+    $("#closerDiv").css('display', 'block');
+
+}
+
+function endLoader()
+{
+    $("#ajaxLoadingDiv").css('display', 'none');
+    $("#closerDiv").css('display', 'none');
+}
+
+
+$(document).ajaxComplete(function () {
+    endLoader();
+});
+
+
+function callAJAX(methodName, data, onSuccess) {
+    $.ajax
+    ({
+        type: 'POST',
+        url: '../AjaxClientHelper.aspx/' + methodName,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: data,
+        success: onSuccess,
+        error: function (jqXHR, textStatus, errorThrown) {
+            var errorMessage = jqXHR.responseText;
+            alert(errorMessage);
+        }
+    });
+}

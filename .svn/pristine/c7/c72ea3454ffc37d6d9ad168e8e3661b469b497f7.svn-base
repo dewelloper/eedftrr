@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sh:StandardBusinessDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ef="http://www.efatura.gov.tr/package-namespace" xsi:schemaLocation="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader PackageProxy_1_2.xsd" xmlns:sh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+  <sh:StandardBusinessDocumentHeader>
+    <sh:HeaderVersion>1.0</sh:HeaderVersion>
+    <sh:Sender>
+      <sh:Identifier>usergb</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Atlas Yazılım</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>1020409972</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Sender>
+    <sh:Receiver>
+      <sh:Identifier>GIB</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Gelir İdaresi Başkanlığı</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>3900383669</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Receiver>
+    <sh:DocumentIdentification>
+      <sh:Standard />
+      <sh:TypeVersion>1.0</sh:TypeVersion>
+      <sh:InstanceIdentifier>1bddc325-036e-495a-b932-2c073aa5dc30</sh:InstanceIdentifier>
+      <sh:Type>USERENVELOPE</sh:Type>
+      <sh:CreationDateAndTime>29.09.2015 15:46:00</sh:CreationDateAndTime>
+    </sh:DocumentIdentification>
+  </sh:StandardBusinessDocumentHeader>
+  <ef:Package>
+    <Elements>
+      <ElementType>PROCESSUSERACCOUNT</ElementType>
+      <ElementCount>1</ElementCount>
+      <ElementList>
+        <EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element" xmlns="http://www.w3.org/2001/04/xmlenc#">
+          <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+          <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <EncryptedKey xmlns="http://www.w3.org/2001/04/xmlenc#">
+              <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+              <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                <X509Data>
+                  <X509Certificate>MIIBxTCCAS6gAwIBAgIQP1U0tAo2rZ1H9qvSWh30ijANBgkqhkiG9w0BAQUFADAhMR8wHQYDVQQDHhYAQQByAGkAZgBQAEMAXABBAHIAaQBmMB4XDTE0MDkxNTAwNDMyNVoXDTE1MDkxNTA2NDMyNVowITEfMB0GA1UEAx4WAEEAcgBpAGYAUABDAFwAQQByAGkAZjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAuBtFctG4WK6SXintYNBg9wZcE6KM460E/kjesudY6kiRVfKILOTt2I4bvDmWz50PQPJQ3F4ZwINIy9rkyJshC1IhuVTfJoCDVz/99c7W2h9bwc6Zj4a7mXcldBgNI00acvVkvyckqwDRVO5bvprD/84EqPcpjrU//BVjrKNrqn0CAwEAATANBgkqhkiG9w0BAQUFAAOBgQClPsKQ3qanJEw03CgZScbVww04iOfOjo54S0nyNUA86j/hn1jOTTLoHjXeXQCrKaHnexa4Nn+QiDxSZIy+Znw6O2FFN5fmoEc5nrcFQTrkVoN3U247UY128hiNSufEECqSxcDK2D7tw4tohEetOPa5ohSvRHkyojdVtVC9KLw8QQ==</X509Certificate>
+                </X509Data>
+              </KeyInfo>
+              <CipherData>
+                <CipherValue>fzDVpKSRdLNmN2rYM2JoDX15H6bzs483QTVU0ZNWGJucjYjWPRcYmM53UUya8sZiM8SnImJcm1Qo16ws5GkoZvxNaNHWFf4xZRbA83jreMCOkzm+0fmcjR7g8Wjm/O7r6NSyfjnwVQd/OeSh2lZNyGsvQ8JuCbDpigLEs5I0Sw0=</CipherValue>
+              </CipherData>
+            </EncryptedKey>
+          </KeyInfo>
+          <CipherData>
+            <CipherValue>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</CipherValue>
+          </CipherData>
+        </EncryptedData>
+      </ElementList>
+    </Elements>
+  </ef:Package>
+</sh:StandardBusinessDocument>

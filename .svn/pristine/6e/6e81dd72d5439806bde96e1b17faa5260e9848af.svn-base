@@ -1,0 +1,23 @@
+﻿using Atlas.Efes.Common.ServiceModel;
+using Atlas.Efes.GIBModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace Atlas.Efes.IntegrationService
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IEfesIntegrationService" in both code and config file together.
+    [ServiceContract]
+    public interface IEfesIntegrationService
+    {
+
+        [OperationContract]
+        DocumentResponse SendDocument(InvoiceInfo invoice);
+
+        [OperationContract]
+        ApplicationResponse GetApplicationResponse(string instanceIdentifier);
+    }
+}

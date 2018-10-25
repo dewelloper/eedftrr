@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AA45444-41B4-4B30-8F33-97802375556F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlas.Efes.Manager</RootNamespace>
+    <AssemblyName>Atlas.Efes.Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BigCinch">
+      <HintPath>..\References\BigCinch.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.Editors.v11.1">
+      <HintPath>..\References\InfragisticsWPF4.Editors.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.Ribbon.v11.1">
+      <HintPath>..\References\InfragisticsWPF4.Ribbon.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="InfragisticsWPF4.v11.1">
+      <HintPath>..\References\InfragisticsWPF4.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\References\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="MEFedMVVM.WPF">
+      <HintPath>..\References\MEFedMVVM.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\References\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bootsrapper.cs" />
+    <Compile Include="Common\MenuComponentBase.cs" />
+    <Compile Include="Common\ModifyViewModelBase.cs" />
+    <Compile Include="Common\ScreenResolver.cs" />
+    <Compile Include="Common\ViewModelBase.cs" />
+    <Compile Include="Controls\TabControlEx.cs" />
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Helper\PasswordHelper.cs" />
+    <Compile Include="Helper\ResourceHelper.cs" />
+    <Compile Include="MasterWindow.xaml.cs">
+      <DependentUpon>MasterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\GalleryItemBox.cs" />
+    <Compile Include="Menu\MenuButton.cs" />
+    <Compile Include="Menu\MenuContextualTabGroup.cs" />
+    <Compile Include="Menu\MenuFactory.cs" />
+    <Compile Include="Menu\MenuTabGroup.cs" />
+    <Compile Include="Menu\MenuTabItem.cs" />
+    <Compile Include="Menu\ScreenManager.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\MasterWindowViewModel.cs" />
+    <Compile Include="ViewModels\ModifyInvoiceInfoViewModel.cs" />
+    <Compile Include="Views\ModifyInvoiceInfoView.xaml.cs">
+      <DependentUpon>ModifyInvoiceInfoView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MasterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\AppStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModifyInvoiceInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\newFileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cancelIcon.png" />
+    <Resource Include="Images\closeView.png" />
+    <Resource Include="Images\deleteIcon.png" />
+    <Resource Include="Images\historyIcon.png" />
+    <Resource Include="Images\pdfIcon.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\wordIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atlas.Efes.Common\Atlas.Efes.Common.csproj">
+      <Project>{bc1f5cef-883e-4778-8ae8-f82bfb8c1db8}</Project>
+      <Name>Atlas.Efes.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.Core\Atlas.Efes.Core.csproj">
+      <Project>{a5ed81ce-1041-4898-8965-69a007cb70f3}</Project>
+      <Name>Atlas.Efes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.DataContext\Atlas.Efes.DataContext.csproj">
+      <Project>{2cd3f4b4-d7fa-40fb-8657-9a8693baea4c}</Project>
+      <Name>Atlas.Efes.DataContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.GIBModel\Atlas.Efes.GIBModel.csproj">
+      <Project>{9ff52f88-b4b1-4764-9a60-23081e2a53bc}</Project>
+      <Name>Atlas.Efes.GIBModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

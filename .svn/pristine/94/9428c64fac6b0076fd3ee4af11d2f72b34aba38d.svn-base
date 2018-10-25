@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+namespace Atlas.Efes.Core.Extensions
+{
+    public static class SerializationExtensions
+    {
+        public static string SerializeObject<T>(this T instance)
+        {
+            XmlSerializer seriliazer = new XmlSerializer(typeof(T));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Encoding = new UTF8Encoding(false, false);
+                //settings.Indent = true;
+                //settings.NewLineChars = Environment.NewLine;
+                //settings.ConformanceLevel = ConformanceLevel.Document;
+
+                using (XmlWriter writer = XmlTextWriter.Create(ms, settings))
+                {
+                    seriliazer.Serialize(writer, instance);
+                }
+
+                string xml = Encoding.UTF8.GetString(ms.ToArray());
+                return xml;
+            }
+        }
+
+        public static T DeseriliazeObject<T>(this T instance, string path)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(T));
+            FileStream fStream = new FileStream(path, FileMode.Open);
+            byte[] buffer = new byte[fStream.Length];
+            fStream.Read(buffer, 0, (int)fStream.Length);
+            MemoryStream stream = new MemoryStream(buffer);
+            fStream.Dispose();
+            fStream.Close();
+            return (T)formatter.Deserialize(stream);
+        }
+
+
+        public static T XmlDeserializeFromString<T>(this string objectData)
+        {
+            return (T)XmlDeserializeFromString(objectData, typeof(T));
+        }
+
+        private static object XmlDeserializeFromString(this string objectData, Type type)
+        {
+            var serializer = new XmlSerializer(type);
+            object result;
+
+            using (TextReader reader = new StringReader(objectData))
+            {
+                result = serializer.Deserialize(reader);
+            }
+
+            return result;
+        }
+    }
+}

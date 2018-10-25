@@ -1,0 +1,171 @@
+﻿using Atlas.Efes.Common.GibModel.UserProcess;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using Atlas.Efes.Core.Extensions;
+using Atlas.Efes.Common.GibModel;
+using System.Xml;
+using Atlas.Efes.Core;
+using Atlas.Efes.GibClient.GibServiceProxy;
+
+namespace Atlas.Efes.Manager
+{
+
+    public partial class MasterWindow : Window
+    {
+        public MasterWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void OnOpenUser(object sender, RoutedEventArgs e)
+        {
+            var instance = GibClient.GibIntegrationClient.CreateInstance();
+            string instanceIdentifier = Guid.NewGuid().ToString();
+
+            StandardBusinessDocument document = new StandardBusinessDocument();
+            document.StandardBusinessDocumentHeader = new StandardBusinessDocumentHeader
+            {
+                DocumentIdentification = new DocumentIdentification
+                {
+                    InstanceIdentifier = instanceIdentifier,
+                    TypeVersion = "1.0",
+                    Type = "USERENVELOPE",
+                    CreationDateAndTime = DateTime.Now.ToString(),
+                    Standard = string.Empty,
+                },
+                Sender = new Sender
+                {
+                    Identifier = "usergb",
+                    ContactInformations =
+                    {
+                        new ContactInformation()
+                        {
+                            Contact="Atlas Yazılım",
+                            ContactTypeIdentifier="UNVAN",
+                        },
+                        new ContactInformation()
+                        {
+                             ContactTypeIdentifier="VKN_TCKN",
+                             Contact="1020409972",
+                        }
+                    }
+                },
+                Receiver = new Receiver()
+                {
+                    Identifier = "GIB",
+                    ContactInformations =
+                    {
+                         new ContactInformation()
+                        {
+                            Contact = "Gelir İdaresi Başkanlığı",
+                            ContactTypeIdentifier = "UNVAN",
+                        },
+                      new ContactInformation()
+                        {
+                            ContactTypeIdentifier = "VKN_TCKN",
+                            Contact = "3900383669",
+                        }
+                    }
+                },
+            };
+            document.Package = new Package();
+            document.Package.Elements = new Elements();
+            document.Package.Elements.ElementCount = 1;
+            document.Package.Elements.ElementList = new List<ElementList>();
+            document.Package.Elements.ElementType = "PROCESSUSERACCOUNT";
+            var elementList = new ElementList();
+
+            elementList.ProcessUserAccount = new ProcessUserAccount()
+            {
+                ApplicationArea = new ApplicationArea()
+                {
+                    CreationDateTime = DateTime.Now.ToString(),
+                    UserReceiverWorkspace = new UserReceiverWorkspace()
+                    {
+
+                    },
+                    UserSenderWorkspace = new UserSenderWorkspace()
+                    {
+                        LogicalID = "1020409972",
+                    },
+                    Signature =string.Empty, 
+                },
+                DataArea = new DataArea()
+                {
+                    Process = string.Empty,
+                    UserAccount =
+                    {
+                        new UserAccount()
+                        {
+                            UserID="1020409972",
+                            UserRole=new UserRole
+                            {
+                                RoleCode="GB",
+                                RoleName="Gönderici Birim",
+                            },
+                            AccountConfiguration=new AccountConfiguration
+                            {
+                                UserOptionCode="2",
+                            },
+                            PersonName=new PersonName
+                            {
+                                FormattedName="Arif Tartan",
+                            },
+                            AuthorizedWorkScope=new AuthorizedWorkScope
+                            {
+                                WorkscopeCode="urn:mail:defaultgb@atlasyazilim.",
+                                WorkscopeName="Gönderici Birim Etiketi",
+                            }
+                        },
+                    }
+                }
+            };
+
+            document.Package.Elements.ElementList.Add(elementList);
+            string xml = document.SerializeObject<StandardBusinessDocument>();
+            xml = xml.Replace("xmlns:hr=\"http://www.hr-xml.org/3\"", "xmlns=\"http://www.hr-xml.org/3\"");
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = string.Format("{0}.xml", instanceIdentifier);
+            path = path + fileName;
+            doc.Save(path);
+
+            string zipDestinationFile = AppDomain.CurrentDomain.BaseDirectory + string.Format("{0}.zip", instanceIdentifier);
+            byte[] result = FileProcess.CreateZipFile(path, zipDestinationFile);
+
+            documentType docType = new documentType();
+            base64Binary b64 = new base64Binary() { };
+            b64.Value = result;
+            b64.contentType = "application/zip";
+            docType.binaryData = b64;
+
+
+            docType.fileName = string.Format("{0}.zip", instanceIdentifier);
+
+            docType.hash = CryptoHelper.GetChecksum(zipDestinationFile);
+
+            var appResult = instance.SendDocument(docType);
+
+            getAppRespResponseType appres = instance.GetApplicationResponse(new getAppRespRequestType()
+            {
+                instanceIdentifier = instanceIdentifier,
+            });
+
+
+            MessageBox.Show(xml);
+        }
+
+    }
+}

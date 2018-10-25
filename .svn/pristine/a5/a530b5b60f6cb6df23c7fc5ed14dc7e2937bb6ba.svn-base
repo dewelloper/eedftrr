@@ -1,0 +1,8 @@
+﻿<Window x:Class="Atlas.Efes.Manager.MasterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Efes Manager" Height="400" Width="600">
+    <Grid>
+        <Button Content="Open User" HorizontalAlignment="Left" Name="openUser" Click="OnOpenUser" Margin="24,27,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

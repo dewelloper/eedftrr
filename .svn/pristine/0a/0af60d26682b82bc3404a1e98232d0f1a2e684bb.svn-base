@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Atlas.Efes.Resources
+{
+    public class PostboxMessages
+    {
+        public static string STATUS_CODE_1177 = "GECERSIZ IMZA";
+
+        public static string STATUS_CODE_1200 = "ZARF BASARIYLA ISLENDI";
+
+        public static string STATUS_CODE_1160 = "XML SEMA KONTROLUNDEN GECEMEDI";
+    }
+}

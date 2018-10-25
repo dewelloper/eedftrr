@@ -1,0 +1,152 @@
+﻿using Atlas.Efes.Manager.IntegrationServiceProxy;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Atlas.Efes.Manager
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            InvoiceInfo invoice = new InvoiceInfo()
+            {
+                AccountingCustomerPartyInfo = new AccountingCustomerPartyInfo()
+                {
+                    Party = new PartyInfo()
+                    {
+
+                    }
+                },
+                LineCountNumeric = 1,
+                CustomizationID = "TR1.2",
+                DocumentCurrencyCode = new DocumentCurrencyCodeInfo() { Value = "TRY", },
+                CopyIndicator = false,
+                IssueDate = DateTime.Now.ToString("yyyy-MM-dd"),
+                ProfileID = "TICARIFATURA",
+                InvoiceTypeCode = "SATIS",
+                UUID = Guid.NewGuid().ToString().ToUpper(),
+                UBLVersionID = "2.1",
+                ID = "ABC2021761408659"//, + DateTime.Now.ToString("ddMMyyyyhh"),
+            };
+
+
+            List<PartyIdentificationInfo> list = new List<PartyIdentificationInfo>();
+            list.Add(new PartyIdentificationInfo()
+            {
+                ID = new IDContainerInfo()
+                {
+                    Value = "1111113361",
+                    schemeID = "VKN",
+                }
+            });
+
+            invoice.AccountingCustomerPartyInfo.Party.PartyIdentifications = list.ToArray();
+
+            invoice.AccountingCustomerPartyInfo.Party.PartyName = new PartyNameInfo()
+            {
+                Name = "ATLAS YAZILIM VE BILISIM HIZMETLERI",
+            };
+
+            invoice.AccountingCustomerPartyInfo.Party.PartyTaxScheme = new PartyTaxSchemeInfo();
+            invoice.AccountingCustomerPartyInfo.Party.PartyTaxScheme.TaxScheme = new TaxSchemeInfo();
+
+            invoice.AccountingCustomerPartyInfo.Party.PostalAddress = new PostalAddressInfo()
+            {
+                Country = new CountryIndicatorInfo()
+                {
+                    Name = "TURKIYE",
+                },
+                CityName = "Istanbul",
+                CitySubdivisionName = "ESENLER",
+            };
+
+            invoice.AccountingCustomerPartyInfo.Party.Contact = new ContactIndicatorInfo()
+            {
+                ElectronicMail = "arif@gmail.com",
+                Telefax = null,
+                Telephone = null,
+            };
+
+
+            invoice.TaxTotalInfo = new TaxTotalInfo();
+            invoice.TaxTotalInfo.TaxAmount = new AmountContainerInfo();
+            invoice.TaxTotalInfo.TaxAmount.Value = 2;
+            invoice.TaxTotalInfo.TaxAmount.currencyID = invoice.DocumentCurrencyCode.Value;
+
+            List<TaxSubTotalInfo> taxes = new List<TaxSubTotalInfo>();
+            taxes.Add(new TaxSubTotalInfo()
+            {
+                TaxAmount = new AmountContainerInfo() { Value = 2, currencyID = invoice.DocumentCurrencyCode.Value, },
+                TaxCategory = new TaxCategoryInfo() { TaxScheme = new TaxSchemeInfo() { Name = "KDV", TaxTypeCode = "0015", } },
+                Percent = 18,
+            });
+
+            invoice.TaxTotalInfo.TaxSubTotals = taxes.ToArray();
+
+            List<InvoiceLineInfo> lines = new List<InvoiceLineInfo>();
+            lines.Add(new InvoiceLineInfo()
+            {
+                ID = "1",
+                InvoicedQuantity = new UnitCodeContainerInfo() { unitCode = "NIU", Value = 1, },
+                LineExtensionAmount = new AmountContainerInfo() { Value = 2, currencyID = invoice.DocumentCurrencyCode.Value, },
+                PriceInfo = new PriceInfo()
+                {
+                    PriceAmount = new AmountContainerInfo()
+                    {
+                        Value = 2,
+                        currencyID = invoice.DocumentCurrencyCode.Value,
+                    }
+                },
+                Item = new ItemInfo()
+                {
+                    Name = "EKMEK",
+                },
+                TaxTotal = new TaxTotalInfo()
+                {
+                    TaxAmount = new AmountContainerInfo() { Value = 2, currencyID = invoice.DocumentCurrencyCode.Value },
+                    TaxSubTotals = taxes.ToArray(),
+                }
+            });
+
+            invoice.LegalMonetaryTotal = new LegalMonetaryTotalInfo()
+            {
+                LineExtensionAmount = new AmountContainerInfo() { Value = 2, currencyID = invoice.DocumentCurrencyCode.Value, },
+                AllowanceTotalAmount = new AmountContainerInfo() { Value = 0, currencyID = invoice.DocumentCurrencyCode.Value, },
+                PayableAmount = new AmountContainerInfo() { Value = 4, currencyID = invoice.DocumentCurrencyCode.Value, },
+                TaxExclusiveAmount = new AmountContainerInfo() { Value = 2, currencyID = invoice.DocumentCurrencyCode.Value, },
+                TaxInclusiveAmount = new AmountContainerInfo() { Value = 4, currencyID = invoice.DocumentCurrencyCode.Value, },
+            };
+            invoice.InvoiceLineInfos = lines.ToArray();
+
+            using (var client = new EfesIntegrationServiceClient())
+            {
+                OperationContextScope scope = new OperationContextScope(client.InnerChannel);
+                HttpRequestMessageProperty requestMessage = new HttpRequestMessageProperty();
+
+                requestMessage.Headers["ApiKey"] = "guSxQ8f5U0yPVKdpwTL8KdytdWQ390MJDYEBzxbi5YI=";
+
+                OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessage;
+
+                var result = client.SendDocument(invoice);
+            }
+        }
+    }
+}

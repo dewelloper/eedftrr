@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC1F5CEF-883E-4778-8AE8-F82BFB8C1DB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlas.Efes.Common</RootNamespace>
+    <AssemblyName>Atlas.Efes.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GIB\AccountConfigurationInfo.cs" />
+    <Compile Include="GIB\AccountingCustomerPartyInfo.cs" />
+    <Compile Include="GIB\AccountingSupplierPartyInfo.cs" />
+    <Compile Include="GIB\AccountPersonInfo.cs" />
+    <Compile Include="GIB\AdditionalDocumentReferenceInfo.cs" />
+    <Compile Include="GIB\AllowanceChargeInfo.cs" />
+    <Compile Include="GIB\AmountContainerInfo.cs" />
+    <Compile Include="GIB\ApplicationAreaInfo.cs" />
+    <Compile Include="GIB\ApplicationResponseInfo.cs" />
+    <Compile Include="GIB\ApplicationSignatureInfo.cs" />
+    <Compile Include="GIB\AreaReceiverInfo.cs" />
+    <Compile Include="GIB\AreaSenderInfo.cs" />
+    <Compile Include="GIB\AttachmentInfo.cs" />
+    <Compile Include="GIB\AuthorizedWorkscopeInfo.cs" />
+    <Compile Include="GIB\BasePropertyChanged.cs" />
+    <Compile Include="GIB\ContactIndicatorInfo.cs" />
+    <Compile Include="GIB\ContactInfoBase.cs" />
+    <Compile Include="GIB\ContactInformation.cs" />
+    <Compile Include="GIB\CountryIndicatorInfo.cs" />
+    <Compile Include="GIB\DataAreaInfo.cs" />
+    <Compile Include="GIB\DigitalSignatureAttachmentInfo.cs" />
+    <Compile Include="GIB\DocumentCurrencyCodeInfo.cs" />
+    <Compile Include="GIB\DocumentIdentificationInfo.cs" />
+    <Compile Include="GIB\DocumentIdentifierInfo.cs" />
+    <Compile Include="GIB\DocumentReferenceInfo.cs" />
+    <Compile Include="GIB\DocumentResponseInfo.cs" />
+    <Compile Include="GIB\ElementListInfo.cs" />
+    <Compile Include="GIB\ElementsInfo.cs" />
+    <Compile Include="GIB\EmbeddedDocumentBinaryObjectInfo.cs" />
+    <Compile Include="GIB\Enums\DocumentTypeInfo.cs" />
+    <Compile Include="GIB\Enums\ElementTypeInfo.cs" />
+    <Compile Include="GIB\ExchangeRateContainerInfo.cs" />
+    <Compile Include="GIB\ExtensionContentInfo.cs" />
+    <Compile Include="GIB\ExternalReferenceInfo.cs" />
+    <Compile Include="GIB\IDContainerInfo.cs" />
+    <Compile Include="GIB\Interfaces\IElementInfo.cs" />
+    <Compile Include="GIB\InvoiceInfo.cs" />
+    <Compile Include="GIB\InvoiceLineInfo.cs" />
+    <Compile Include="GIB\ItemInfo.cs" />
+    <Compile Include="GIB\LegalMonetaryTotalInfo.cs" />
+    <Compile Include="GIB\LineReferenceInfo.cs" />
+    <Compile Include="GIB\LineResponseInfo.cs" />
+    <Compile Include="GIB\PackageInfo.cs" />
+    <Compile Include="GIB\PartyIdentificationInfo.cs" />
+    <Compile Include="GIB\PartyInfo.cs" />
+    <Compile Include="GIB\PartyNameInfo.cs" />
+    <Compile Include="GIB\PartyTaxSchemeInfo.cs" />
+    <Compile Include="GIB\PayeeFinancialAccountInfo.cs" />
+    <Compile Include="GIB\PaymentAlternativeExchangeRateInfo.cs" />
+    <Compile Include="GIB\PaymentExchangeRateInfo.cs" />
+    <Compile Include="GIB\PaymentMeansInfo.cs" />
+    <Compile Include="GIB\PaymentTermsInfo.cs" />
+    <Compile Include="GIB\PersonInfo.cs" />
+    <Compile Include="GIB\PostalAddressInfo.cs" />
+    <Compile Include="GIB\PriceExchangeRateInfo.cs" />
+    <Compile Include="GIB\PriceInfo.cs" />
+    <Compile Include="GIB\ProcessUserAccountInfo.cs" />
+    <Compile Include="GIB\ReceiverInfo.cs" />
+    <Compile Include="GIB\ReceiverPartyInfo.cs" />
+    <Compile Include="GIB\ResponseInfo.cs" />
+    <Compile Include="GIB\SenderInfo.cs" />
+    <Compile Include="GIB\SenderPartyInfo.cs" />
+    <Compile Include="GIB\ServiceProxy\EFatura.cs" />
+    <Compile Include="GIB\SignatoryPartyInfo.cs" />
+    <Compile Include="GIB\SignatureInfo.cs" />
+    <Compile Include="GIB\StandardBusinessDocumentHeaderInfo.cs" />
+    <Compile Include="GIB\StandardBusinessDocumentInfo.cs" />
+    <Compile Include="GIB\TaxCategoryInfo.cs" />
+    <Compile Include="GIB\TaxExchangeRateInfo.cs" />
+    <Compile Include="GIB\TaxSchemeInfo.cs" />
+    <Compile Include="GIB\TaxSubTotalInfo.cs" />
+    <Compile Include="GIB\TaxTotalInfo.cs" />
+    <Compile Include="GIB\UBLExtensionInfo.cs" />
+    <Compile Include="GIB\UBLExtensionsInfo.cs" />
+    <Compile Include="GIB\UnitCodeContainerInfo.cs" />
+    <Compile Include="GIB\UserAccountInfo.cs" />
+    <Compile Include="GIB\UserRoleInfo.cs" />
+    <Compile Include="Model\CustomerInfo.cs" />
+    <Compile Include="Model\DatabaseResult.cs" />
+    <Compile Include="GIB\Common\GIBUserInfo.cs" />
+    <Compile Include="Model\OperationResultBase.cs" />
+    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\LifeTimeKeys.cs" />
+    <Compile Include="Resources\ReceiverIntegrationActivities.cs" />
+    <Compile Include="Resources\ApplicationResponseMessages.cs" />
+    <Compile Include="Resources\SystemConstants.cs" />
+    <Compile Include="ServiceModel\ApplicationResponse.cs" />
+    <Compile Include="ServiceModel\DocumentInfo.cs" />
+    <Compile Include="ServiceModel\DocumentResponse.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

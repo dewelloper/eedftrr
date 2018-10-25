@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserList>
+	<User>
+		<Identifier>0010030481</Identifier>
+		<Alias>urn:mail:defaultpk@abalioglu.com.tr</Alias>
+		<Title>ABALIOĞLU HOLDİNG ANONİM ŞİRKETİ</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2015-09-29T11:34:24</FirstCreationTime>
+		<AliasCreationTime>2015-09-29T11:34:24</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010047133</Identifier>
+		<Alias>urn:mail:defaultpk@tr.abb.com</Alias>
+		<Title>ABB ELEKTRİK SANAYİ ANONİM ŞİRKETİ</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2014-03-05T22:35:35</FirstCreationTime>
+		<AliasCreationTime>2014-04-14T10:51:42</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010052124</Identifier>
+		<Alias>urn:mail:defaultpk@abdihold.com.tr</Alias>
+		<Title>Abdi İbrahin Holding A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-10-24T17:14:14</FirstCreationTime>
+		<AliasCreationTime>2013-10-24T17:17:32</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010052132</Identifier>
+		<Alias>urn:mail:defaultpk@abdipa.com.tr</Alias>
+		<Title>Abdi İbrahim İlaç Paz. A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-10-24T17:26:15</FirstCreationTime>
+		<AliasCreationTime>2013-10-24T17:28:17</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010052149</Identifier>
+		<Alias>urn:mail:defaultpk@abdisa.com.tr</Alias>
+		<Title>Abdi İbrahim İlaç San. Tic. A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-10-24T17:29:27</FirstCreationTime>
+		<AliasCreationTime>2013-10-24T17:31:37</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010616251</Identifier>
+		<Alias>defaultpk</Alias>
+		<Title>6 Gen Yazılım Sanayi Ve Ticaret Limited Şirketi</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-06-24T16:55:31</FirstCreationTime>
+		<AliasCreationTime>2013-06-24T17:08:46</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010649362</Identifier>
+		<Alias>urn:mail:defaultpk@abdiga.com.tr</Alias>
+		<Title>Abdi İbrahim Gayrimenkul Yat. Tic. San. A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-10-24T17:32:55</FirstCreationTime>
+		<AliasCreationTime>2013-10-24T17:34:19</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010669106</Identifier>
+		<Alias>urn:mail:defaultpk@abdiibrahim.com.tr</Alias>
+		<Title>Abdica İlaç San. Tic. A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-10-24T16:51:31</FirstCreationTime>
+		<AliasCreationTime>2013-10-24T16:54:08</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0010745362</Identifier>
+		<Alias>urn:mail:defaultpk@otsuka.com.tr</Alias>
+		<Title>Abdi İbrahim Otsuka İlaç San. Tic. A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-10-24T17:23:18</FirstCreationTime>
+		<AliasCreationTime>2013-10-24T17:24:43</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0050008904</Identifier>
+		<Alias>urn:mail:defaultpk@acibadem.com.tr</Alias>
+		<Title>Acıbadem Sağlık Hizmetleri ve Ticaret A.Ş</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-09-17T18:29:15</FirstCreationTime>
+		<AliasCreationTime>2013-09-17T18:31:13</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0050175925</Identifier>
+		<Alias>urn:mail:defaultpk@acibadem.com.tr</Alias>
+		<Title>Acıbadem Poliklinikleri A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-09-17T18:40:09</FirstCreationTime>
+		<AliasCreationTime>2013-09-17T18:41:10</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0050206928</Identifier>
+		<Alias>urn:mail:defaultpk@acibadem.com.tr</Alias>
+		<Title>Acıbadem Labmed Sağlık Hizmetleri A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-09-17T18:38:52</FirstCreationTime>
+		<AliasCreationTime>2013-09-17T18:39:39</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0050412974</Identifier>
+		<Alias>urn:mail:defaultpk@acibadem.com.tr</Alias>
+		<Title>Acıbadem Proje Yönetimi A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-09-17T18:33:13</FirstCreationTime>
+		<AliasCreationTime>2013-09-17T18:34:47</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0050523185</Identifier>
+		<Alias>urn:mail:defaultpk@acibadem.com.tr</Alias>
+		<Title>Acıbadem Mobil Sağlık Hizmetleri A.Ş.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-09-17T18:41:43</FirstCreationTime>
+		<AliasCreationTime>2013-09-17T18:42:32</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0070063989</Identifier>
+		<Alias>urn:mail:defaultpk@ittifak.com.tr</Alias>
+		<Title>Adese Alışveriş Merkezleri Ticaret Anonim Şirketi</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-06-24T17:37:40</FirstCreationTime>
+		<AliasCreationTime>2015-08-12T14:25:35</AliasCreationTime>
+	</User>
+	<User>
+		<Identifier>0070131330</Identifier>
+		<Alias>urn:mail:defaultpk@hiltonadana.com.tr</Alias>
+		<Title>Adana Hilton Enternasyonal Otelcilik Ltd. Şti.</Title>
+		<Type>Özel</Type>
+		<FirstCreationTime>2013-11-06T11:07:04</FirstCreationTime>
+		<AliasCreationTime>2013-11-06T11:07:53</AliasCreationTime>
+	</User>
+	
+</UserList>

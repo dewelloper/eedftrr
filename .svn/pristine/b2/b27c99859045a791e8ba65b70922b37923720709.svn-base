@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.signserver.ebg.tr/" targetNamespace="http://services.signserver.ebg.tr/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Test" type="tns:Test" />
+  <xs:element name="TestResponse" type="tns:TestResponse" />
+  <xs:element name="sign" type="tns:sign" />
+  <xs:element name="signCms" type="tns:signCms" />
+  <xs:element name="signCmsResponse" type="tns:signCmsResponse" />
+  <xs:element name="signResponse" type="tns:signResponse" />
+  <xs:element name="signpdf" type="tns:signpdf" />
+  <xs:element name="signpdfResponse" type="tns:signpdfResponse" />
+  <xs:element name="timeStamp" type="tns:timeStamp" />
+  <xs:element name="timeStampResponse" type="tns:timeStampResponse" />
+  <xs:element name="verify" type="tns:verify" />
+  <xs:element name="verifyLevel" type="tns:verifyLevel" />
+  <xs:element name="verifyLevelResponse" type="tns:verifyLevelResponse" />
+  <xs:element name="verifyResponse" type="tns:verifyResponse" />
+  <xs:element name="writeNotData" type="tns:writeNotData" />
+  <xs:element name="writeNotDataResponse" type="tns:writeNotDataResponse" />
+  <xs:complexType name="verifyLevel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="signedData" nillable="true" type="xs:base64Binary" />
+      <xs:element name="verifiyLevel" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyLevelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dataList" nillable="true" type="tns:dataFile" />
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+      <xs:element name="isVerified" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="signatureList" nillable="true" type="tns:signer" />
+      <xs:element minOccurs="0" name="verifyLog" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dataFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dataFile" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" name="hash" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="mimeType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signer">
+    <xs:sequence>
+      <xs:element name="isValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="signerCertEffectiveDate" type="xs:string" />
+      <xs:element minOccurs="0" name="signerCertExpiredDate" type="xs:string" />
+      <xs:element minOccurs="0" name="signerCertIssuer" type="xs:string" />
+      <xs:element minOccurs="0" name="signerCertSerialNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="signerCertSubject" type="xs:string" />
+      <xs:element minOccurs="0" name="signerName" type="xs:string" />
+      <xs:element minOccurs="0" name="signingTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="tcKimlikNo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Test">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="toTimeStampData" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:signatureResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signatureResponse">
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="signedFile" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timeStamp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="toTimeStampData" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timeStampResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signCms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="toSignedData" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="CertificateId" type="xs:string" />
+      <xs:element name="isUsedTsa" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signCmsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:signatureResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="toSignedData" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="certificateId" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureId" type="xs:string" />
+      <xs:element name="envelopedType" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:signatureResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="writeNotData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" nillable="true" type="xs:base64Binary" />
+      <xs:element name="arg1" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="writeNotDataResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="verify">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="signedData" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:verifyResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signpdf">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="toSignedPdf" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="certificateId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signpdfResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:signatureResponse" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

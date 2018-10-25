@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{241653A9-E882-42F8-AA67-9B7A2B9E2AB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlas.Efes.Common</RootNamespace>
+    <AssemblyName>Atlas.Efes.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\DocumentResult.cs" />
+    <Compile Include="Container\ExchangeRateContainerInfo.cs" />
+    <Compile Include="Container\IDContainerInfo.cs" />
+    <Compile Include="Container\UnitCodeContainerInfo.cs" />
+    <Compile Include="Enums\DocumentIdenticationTypes.cs" />
+    <Compile Include="GibModel\AccountingCustomerPartyInfo.cs" />
+    <Compile Include="GibModel\AccountingSupplierPartyInfo.cs" />
+    <Compile Include="GibModel\AdditionalDocumentReferenceInfo.cs" />
+    <Compile Include="GibModel\AllowanceChargeInfo.cs" />
+    <Compile Include="GibModel\AttachmentInfo.cs" />
+    <Compile Include="GibModel\ContactIndicatorInfo.cs" />
+    <Compile Include="GibModel\ContactInformation.cs" />
+    <Compile Include="GibModel\CountryIndicatorInfo.cs" />
+    <Compile Include="GibModel\DigitalSignatureAttachmentInfo.cs" />
+    <Compile Include="GibModel\DocumentCurrencyCodeInfo.cs" />
+    <Compile Include="GibModel\DocumentIdentificationInfo.cs" />
+    <Compile Include="GibModel\DocumentIdentifierInfo.cs" />
+    <Compile Include="GibModel\ElementListInfo.cs" />
+    <Compile Include="GibModel\ElementsInfo.cs" />
+    <Compile Include="GibModel\EmbeddedDocumentBinaryObjectInfo.cs" />
+    <Compile Include="GibModel\ExtensionContentInfo.cs" />
+    <Compile Include="GibModel\ExternalReferenceInfo.cs" />
+    <Compile Include="GibModel\InvoiceInfo.cs" />
+    <Compile Include="GibModel\InvoiceLineInfo.cs" />
+    <Compile Include="GibModel\ItemInfo.cs" />
+    <Compile Include="GibModel\LegalMonetaryTotalInfo.cs" />
+    <Compile Include="GibModel\PackageInfo.cs" />
+    <Compile Include="GibModel\PartyInfo.cs" />
+    <Compile Include="GibModel\PartyIdentificationInfo.cs" />
+    <Compile Include="GibModel\PartyNameInfo.cs" />
+    <Compile Include="GibModel\PartyTaxSchemeInfo.cs" />
+    <Compile Include="GibModel\PayeeFinancialAccountInfo.cs" />
+    <Compile Include="GibModel\PaymentAlternativeExchangeRateInfo.cs" />
+    <Compile Include="GibModel\PaymentExchangeRateInfo.cs" />
+    <Compile Include="GibModel\PaymentMeansInfo.cs" />
+    <Compile Include="GibModel\PaymentTermsInfo.cs" />
+    <Compile Include="GibModel\PersonInfo.cs" />
+    <Compile Include="GibModel\PostalAddressInfo.cs" />
+    <Compile Include="GibModel\PriceExchangeRateInfo.cs" />
+    <Compile Include="GibModel\PriceInfo.cs" />
+    <Compile Include="GibModel\ReceiverInfo.cs" />
+    <Compile Include="GibModel\SenderInfo.cs" />
+    <Compile Include="GibModel\SignatoryPartyInfo.cs" />
+    <Compile Include="GibModel\SignatureInfo.cs" />
+    <Compile Include="GibModel\StandardBusinessDocumentInfo.cs" />
+    <Compile Include="GibModel\StandardBusinessDocumentHeaderInfo.cs" />
+    <Compile Include="Container\AmountContainerInfo.cs" />
+    <Compile Include="GibModel\TaxCategoryInfo.cs" />
+    <Compile Include="GibModel\TaxExchangeRateInfo.cs" />
+    <Compile Include="GibModel\TaxSchemeInfo.cs" />
+    <Compile Include="GibModel\TaxSubTotalInfo.cs" />
+    <Compile Include="GibModel\TaxTotalInfo.cs" />
+    <Compile Include="GibModel\UBLExtensionInfo.cs" />
+    <Compile Include="GibModel\UBLExtensionsInfo.cs" />
+    <Compile Include="GibModel\UserProcess\AccountConfiguration.cs" />
+    <Compile Include="GibModel\UserProcess\ApplicationArea.cs" />
+    <Compile Include="GibModel\UserProcess\AuthorizedWorkScope.cs" />
+    <Compile Include="GibModel\UserProcess\DataArea.cs" />
+    <Compile Include="GibModel\UserProcess\PersonName.cs" />
+    <Compile Include="GibModel\UserProcess\ProcessUserAccount.cs" />
+    <Compile Include="GibModel\UserProcess\SignatureItem.cs" />
+    <Compile Include="GibModel\UserProcess\UserAccount.cs" />
+    <Compile Include="GibModel\UserProcess\UserReceiverWorkspace.cs" />
+    <Compile Include="GibModel\UserProcess\UserRole.cs" />
+    <Compile Include="GibModel\UserProcess\UserSenderWorkspace.cs" />
+    <Compile Include="Model\AddressInfo.cs" />
+    <Compile Include="Model\CityInfo.cs" />
+    <Compile Include="Model\ContactInfo.cs" />
+    <Compile Include="Model\CountryInfo.cs" />
+    <Compile Include="Model\CreateInvoiceResult.cs" />
+    <Compile Include="Model\CustomerInfo.cs" />
+    <Compile Include="Model\CustomerTypeInfo.cs" />
+    <Compile Include="Model\EInvoiceUserInfo.cs" />
+    <Compile Include="Model\InvoiceTaxIndicatorInfo.cs" />
+    <Compile Include="Model\LookupInfo.cs" />
+    <Compile Include="Model\OperationResultBase.cs" />
+    <Compile Include="Model\ResponseService.cs" />
+    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,59 @@
+﻿using Atlas.Efes.Common.Model;
+using Atlas.Efes.DataContext;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Web;
+using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Atlas.Efes.Portal
+{
+    public partial class AjaxClientHelper : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private static DatabaseResult<T> ExecuteDatabase<T>(Action<DatabaseResult<T>> ExecuteAction)
+        {
+            DatabaseResult<T> databaseResult = new DatabaseResult<T>();
+
+            try
+            {
+                ExecuteAction(databaseResult);
+            }
+            catch (Exception ex)
+            {
+                databaseResult.IsSuccess = false;
+
+                if (ex.InnerException == null)
+                {
+                    databaseResult.Message = ex.Message;
+                }
+                else
+                {
+                    databaseResult.Message = ex.InnerException.Message;
+                }
+            }
+
+            return databaseResult;
+        }
+
+        [WebMethod]
+        public static DatabaseResult<UserInfo> LoginUser(UserInfo userInfo)
+        {
+            DatabaseResult<UserInfo> databaseResult = null;
+            
+            ExecuteDatabase<UserInfo>((param) =>
+            {
+                databaseResult = UserDataContext.Instance.LoginUser(userInfo);
+            });
+
+            return databaseResult;
+        }
+    }
+}

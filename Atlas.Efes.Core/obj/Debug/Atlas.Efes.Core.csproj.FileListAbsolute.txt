@@ -1,0 +1,12 @@
+D:\Project\Atlas.Efes\Atlas.Efes.Core\bin\Debug\Atlas.Efes.Core.dll
+D:\Project\Atlas.Efes\Atlas.Efes.Core\bin\Debug\Atlas.Efes.Core.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.Core\bin\Debug\Ionic.Zip.dll
+D:\Project\Atlas.Efes\Atlas.Efes.Core\obj\Debug\Atlas.Efes.Core.dll
+D:\Project\Atlas.Efes\Atlas.Efes.Core\obj\Debug\Atlas.Efes.Core.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.Core\obj\Debug\Atlas.Efes.Core.csprojResolveAssemblyReference.cache
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Core\bin\Debug\Atlas.Efes.Core.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Core\bin\Debug\Atlas.Efes.Core.pdb
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Core\bin\Debug\Ionic.Zip.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Core\obj\Debug\Atlas.Efes.Core.csprojResolveAssemblyReference.cache
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Core\obj\Debug\Atlas.Efes.Core.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Core\obj\Debug\Atlas.Efes.Core.pdb

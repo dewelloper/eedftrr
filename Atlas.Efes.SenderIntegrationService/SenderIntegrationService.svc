@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Atlas.Efes.SenderIntegrationService.SenderIntegrationService" CodeBehind="SenderIntegrationService.svc.cs" %>

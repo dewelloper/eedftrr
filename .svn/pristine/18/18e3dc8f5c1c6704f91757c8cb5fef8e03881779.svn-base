@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sh:StandardBusinessDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ef="http://www.efatura.gov.tr/package-namespace" xsi:schemaLocation="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader PackageProxy_1_2.xsd" xmlns:sh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+  <sh:StandardBusinessDocumentHeader>
+    <sh:HeaderVersion>1.0</sh:HeaderVersion>
+    <sh:Sender>
+      <sh:Identifier>usergb</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Atlas Yazılım</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>1020409972</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Sender>
+    <sh:Receiver>
+      <sh:Identifier>GIB</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Gelir İdaresi Başkanlığı</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>3900383669</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Receiver>
+    <sh:DocumentIdentification>
+      <sh:Standard />
+      <sh:TypeVersion>1.0</sh:TypeVersion>
+      <sh:InstanceIdentifier>c34ad5a4-628c-4fd7-a28b-df72573e966d</sh:InstanceIdentifier>
+      <sh:Type>USERENVELOPE</sh:Type>
+      <sh:CreationDateAndTime>29.09.2015 15:28:35</sh:CreationDateAndTime>
+    </sh:DocumentIdentification>
+  </sh:StandardBusinessDocumentHeader>
+  <ef:Package>
+    <Elements>
+      <ElementType>PROCESSUSERACCOUNT</ElementType>
+      <ElementCount>1</ElementCount>
+      <ElementList>
+        <ProcessUserAccount xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:oa="http://www.openapplications.org/oagis/9" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xsi:schemaLocation="http://www.hr-xml.org/3 ../HRXML/UserAccount.xsd         http://www.w3.org/2000/09/xmldsig# xmldsig-core-schema.xsd         http://uri.etsi.org/01903/v1.3.2# XAdES.xsd">
+          <oa:ApplicationArea>
+            <oa:Sender>
+              <oa:LogicalID>1020409972</oa:LogicalID>
+            </oa:Sender>
+            <oa:Receiver />
+            <oa:CreationDateTime>29.09.2015 15:28:35</oa:CreationDateTime>
+            <EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element" xmlns="http://www.w3.org/2001/04/xmlenc#">
+              <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+              <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                <EncryptedKey xmlns="http://www.w3.org/2001/04/xmlenc#">
+                  <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+                  <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+                    <X509Data>
+                      <X509Certificate>MIIBxTCCAS6gAwIBAgIQP1U0tAo2rZ1H9qvSWh30ijANBgkqhkiG9w0BAQUFADAhMR8wHQYDVQQDHhYAQQByAGkAZgBQAEMAXABBAHIAaQBmMB4XDTE0MDkxNTAwNDMyNVoXDTE1MDkxNTA2NDMyNVowITEfMB0GA1UEAx4WAEEAcgBpAGYAUABDAFwAQQByAGkAZjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAuBtFctG4WK6SXintYNBg9wZcE6KM460E/kjesudY6kiRVfKILOTt2I4bvDmWz50PQPJQ3F4ZwINIy9rkyJshC1IhuVTfJoCDVz/99c7W2h9bwc6Zj4a7mXcldBgNI00acvVkvyckqwDRVO5bvprD/84EqPcpjrU//BVjrKNrqn0CAwEAATANBgkqhkiG9w0BAQUFAAOBgQClPsKQ3qanJEw03CgZScbVww04iOfOjo54S0nyNUA86j/hn1jOTTLoHjXeXQCrKaHnexa4Nn+QiDxSZIy+Znw6O2FFN5fmoEc5nrcFQTrkVoN3U247UY128hiNSufEECqSxcDK2D7tw4tohEetOPa5ohSvRHkyojdVtVC9KLw8QQ==</X509Certificate>
+                    </X509Data>
+                  </KeyInfo>
+                  <CipherData>
+                    <CipherValue>cwEA20hTiWHYHrOeLmFPIjrefEHyFRWUlfv60c2cDF6zxRoX7IIJhNCPx8TPHXYBtpRYqBqaWofZGBnVUyfpu0BljrkxRz1IuYmKfyMHLB7gXb1sB+oCqOMN4YkYAqFy2Fk0DHnJZJrHrvXnHcdsIHB9fZPwjdUXoL09hM4v/Ng=</CipherValue>
+                  </CipherData>
+                </EncryptedKey>
+              </KeyInfo>
+              <CipherData>
+                <CipherValue>NI2txuAhQkhA9h6af7JpRK4krge3Z77ZX9UdviaXNSm8TGO2a3XfhnEv/WarM2VNOckSh+ch5kuCUvFwbkAn+iOVTlh4pqE+83Cut+zVb7Sja0ZTvsRcoJATWUNm1PFT</CipherValue>
+              </CipherData>
+            </EncryptedData>
+          </oa:ApplicationArea>
+          <DataArea>
+            <oa:Process />
+            <UserAccount>
+              <UserAccount>
+                <UserID>1020409972</UserID>
+                <PersonName>
+                  <FormattedName>Arif Tartan</FormattedName>
+                </PersonName>
+                <UserRole>
+                  <RoleCode>GB</RoleCode>
+                  <RoleName>Gönderici Birim</RoleName>
+                </UserRole>
+                <AuthorizedWorkScope>
+                  <WorkScopeCode>urn:mail:defaultgb@atlasyazilim.</WorkScopeCode>
+                  <WorkScopeName>Gönderici Birim Etiketi</WorkScopeName>
+                </AuthorizedWorkScope>
+                <AccountConfiguration>
+                  <UserOptionCode>2</UserOptionCode>
+                </AccountConfiguration>
+              </UserAccount>
+            </UserAccount>
+          </DataArea>
+        </ProcessUserAccount>
+      </ElementList>
+    </Elements>
+  </ef:Package>
+</sh:StandardBusinessDocument>

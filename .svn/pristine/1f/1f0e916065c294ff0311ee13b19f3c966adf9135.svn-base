@@ -1,0 +1,338 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainMaster.master.cs" Inherits="Atlas.Efes.Portal.MainMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <title>AdminDesigns - A Responsive HTML5 Admin UI Framework</title>
+    <meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />
+    <meta name="description" content="AdminDesigns - A Responsive HTML5 Admin UI Framework">
+    <meta name="author" content="AdminDesigns">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font CSS (Via CDN) -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+    <!-- Admin Panels CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-plugins/admin-panels/adminpanels.css">
+
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+
+<body class="dashboard-page sb-l-o sb-r-c">
+
+
+    <!-- Start: Main -->
+    <div id="main">
+
+        <!-- Start: Header -->
+        <header class="navbar navbar-fixed-top bg-warning">
+            <div class="navbar-branding bg-warning">
+                <a class="navbar-brand" href="Dashboard.aspx"><b>Atlas </b>Efes
+                </a>
+                <span id="toggle_sidemenu_l" class="glyphicons glyphicons-show_lines"></span>
+                <ul class="nav navbar-nav pull-right hidden">
+                    <li>
+                        <a href="#" class="sidebar-menu-toggle">
+                            <span class="octicon octicon-ruby fs20 mr10 pull-right "></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-item-slide">
+                    <a class="dropdown-toggle pl10 pr10" data-toggle="dropdown" href="#">
+                        <span class="octicon octicon-radio-tower fs18"></span>
+                    </a>
+
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="flag-xs flag-tr mr10"></span>
+                        <span class="fw600">TR</span>
+                    </a>
+                    <%--<ul class="dropdown-menu animated animated-short flipInX" role="menu">
+                        <li>
+                            <a href="javascript:void(0);" class="fw600">
+                                <span class="flag-xs flag-tr mr10"></span>Turkish </a>
+                        </li>
+                    </ul>--%>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
+                        <img src="Images/noavatar.png" alt="avatar" class="mw30 br64 mr15">
+                        <span>Arif</span>
+                        <span class="caret caret-tp"></span>
+                    </a>
+
+                </li>
+            </ul>
+
+        </header>
+
+        <aside id="sidebar_left" class="nano nano-primary">
+            <div class="nano-content">
+
+                <!-- sidebar menu -->
+                <ul class="nav sidebar-menu">
+                    <li class="sidebar-label pt15">Fatura Islemleri</li>
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="glyphicons glyphicons-file"></span>
+                            <span class="sidebar-title">Basic</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="CreateInvoice.aspx">
+                                    <span class="glyphicons glyphicons-folder_plus"></span>Fatura Olustur</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicons glyphicons-upload"></span>Fatura Yükle</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicons glyphicons-notes_2"></span>Taslaklar</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <!-- sidebar resources -->
+                    <li class="sidebar-label pt20">Fatura Yönetim</li>
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="glyphicons glyphicons-inbox"></span>
+                            <span class="sidebar-title">Gelen Kutusu</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="ui_alerts.html">
+                                    <span class="glyphicons glyphicons-more_items"></span>Faturalar</a>
+                            </li>
+                            <li>
+                                <a href="ui_animations.html">
+                                    <span class="glyphicons glyphicons-file_export"></span>Bekleyenler</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="glyphicons glyphicons-inbox_out"></span>
+                            <span class="sidebar-title">Giden Kutusu</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="form_inputs.html">
+                                    <span class="glyphicons glyphicons-more_items"></span>Faturalar</a>
+                            </li>
+                            <li>
+                                <a href="ui_typography.html">
+                                    <span class="glyphicons glyphicons-file_export"></span>Bekleyenler</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <section id="content_wrapper">
+
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </section>
+    </div>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="assets/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Sparklines CDN -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+
+    <%--<!-- Chart Plugins -->
+    <script type="text/javascript" src="vendor/plugins/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="vendor/plugins/circles/circles.js"></script>
+    <script type="text/javascript" src="vendor/plugins/raphael/raphael.js"></script>--%>
+
+    <!-- Holder js  -->
+    <script type="text/javascript" src="assets/js/bootstrap/holder.min.js"></script>
+
+    <!-- Theme Javascript -->
+    <script type="text/javascript" src="assets/js/utility/utility.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/demo.js"></script>
+
+    <!-- Admin Panels  -->
+    <script type="text/javascript" src="assets/admin-tools/admin-plugins/admin-panels/json2.js"></script>
+    <script type="text/javascript" src="assets/admin-tools/admin-plugins/admin-panels/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="assets/admin-tools/admin-plugins/admin-panels/adminpanels.js"></script>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript" src="assets/js/pages/widgets.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+            "use strict";
+
+            // Init Theme Core      
+            Core.init({
+                sbm: "sb-l-c",
+            });
+
+            // Init Demo JS
+            Demo.init();
+
+            // Init Widget Demo JS
+            // demoHighCharts.init();
+
+            // Because we are using Admin Panels we use the OnFinish 
+            // callback to activate the demoWidgets. It's smoother if
+            // we let the panels be moved and organized before 
+            // filling them with content from various plugins
+
+            // Init plugins used on this page
+            // HighCharts, JvectorMap, Admin Panels
+
+            // Init Admin Panels on widgets inside the ".admin-panels" container
+            $('.admin-panels').adminpanel({
+                grid: '.admin-grid',
+                draggable: true,
+                mobile: true,
+                callback: function () {
+                    bootbox.confirm('<h3>A Custom Callback!</h3>', function () { });
+                },
+                onFinish: function () {
+                    $('.admin-panels').addClass('animated fadeIn').removeClass('fade-onLoad');
+
+                    // Init the rest of the plugins now that the panels
+                    // have had a chance to be moved and organized.
+                    // It's less taxing to organize empty panels
+                    demoHighCharts.init();
+                    runVectorMaps();
+
+                    // We also refresh any "in-view" waypoints to ensure
+                    // the correct position is being calculated after the 
+                    // Admin Panels plugin moved everything
+                    Waypoint.refreshAll();
+
+                },
+                onSave: function () {
+                    $(window).trigger('resize');
+                }
+            });
+
+            // Widget VectorMap
+            function runVectorMaps() {
+
+                // Jvector Map Plugin
+                var runJvectorMap = function () {
+                    // Data set
+                    var mapData = [900, 700, 350, 500];
+                    // Init Jvector Map
+                    $('#WidgetMap').vectorMap({
+                        map: 'us_lcc_en',
+                        //regionsSelectable: true,
+                        backgroundColor: 'transparent',
+                        series: {
+                            markers: [{
+                                attribute: 'r',
+                                scale: [3, 7],
+                                values: mapData
+                            }]
+                        },
+                        regionStyle: {
+                            initial: {
+                                fill: '#E5E5E5'
+                            },
+                            hover: {
+                                "fill-opacity": 0.3
+                            }
+                        },
+                        markers: [{
+                            latLng: [37.78, -122.41],
+                            name: 'San Francisco,CA'
+                        }, {
+                            latLng: [36.73, -103.98],
+                            name: 'Texas,TX'
+                        }, {
+                            latLng: [38.62, -90.19],
+                            name: 'St. Louis,MO'
+                        }, {
+                            latLng: [40.67, -73.94],
+                            name: 'New York City,NY'
+                        }],
+                        markerStyle: {
+                            initial: {
+                                fill: '#a288d5',
+                                stroke: '#b49ae0',
+                                "fill-opacity": 1,
+                                "stroke-width": 10,
+                                "stroke-opacity": 0.3,
+                                r: 3
+                            },
+                            hover: {
+                                stroke: 'black',
+                                "stroke-width": 2
+                            },
+                            selected: {
+                                fill: 'blue'
+                            },
+                            selectedHover: {}
+                        },
+                    });
+                    // Manual code to alter the Vector map plugin to 
+                    // allow for individual coloring of countries
+                    var states = ['US-CA', 'US-TX', 'US-MO',
+                        'US-NY'
+                    ];
+                    var colors = [bgWarningLr, bgPrimaryLr, bgInfoLr, bgAlertLr];
+                    var colors2 = [bgWarning, bgPrimary, bgInfo, bgAlert];
+                    $.each(states, function (i, e) {
+                        $("#WidgetMap path[data-code=" + e + "]").css({
+                            fill: colors[i]
+                        });
+                    });
+                    $('#WidgetMap').find('.jvectormap-marker')
+                        .each(function (i, e) {
+                            $(e).css({
+                                fill: colors2[i],
+                                stroke: colors2[i]
+                            });
+                        });
+                }
+
+                if ($('#WidgetMap').length) {
+                    runJvectorMap();
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

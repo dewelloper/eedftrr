@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFService" />
+      <xsd:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd3" />
+      <xsd:import schemaLocation="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_CreditCardPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreditCardPayment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreditCardPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreditCardPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreditCardPaymentRefund_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreditCardPaymentRefund" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreditCardPaymentRefund_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreditCardPaymentRefundResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAnyProcByParams_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAnyProcByParams" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAnyProcByParams_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAnyProcByParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getMultipleCursor_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMultipleCursor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getMultipleCursor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMultipleCursorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReport" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDATA_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDATA" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDATA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDATAResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ServerInsUpd_InputMessage">
+    <wsdl:part name="parameters" element="tns:ServerInsUpd" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ServerInsUpd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ServerInsUpdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAnyProcByNamelessParam_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAnyProcByNamelessParam" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getAnyProcByNamelessParam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAnyProcByNamelessParamResponse" />
+  </wsdl:message>
+  <wsdl:message name="transactionApprover">
+    <wsdl:part name="parameters" element="tns:transactionApprover" />
+  </wsdl:message>
+  <wsdl:message name="transactionApprover_Headers">
+    <wsdl:part name="affiliateApprover" element="tns:affiliateApprover" />
+  </wsdl:message>
+  <wsdl:message name="sessionInfo">
+    <wsdl:part name="parameters" element="tns:sessionInfo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetServiceResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceResult" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetServiceResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetServiceResultMulti_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceResultMulti" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetServiceResultMulti_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceResultMultiResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="CreditCardPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreditCardPayment" message="tns:IService1_CreditCardPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreditCardPaymentResponse" message="tns:IService1_CreditCardPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreditCardPaymentRefund">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreditCardPaymentRefund" message="tns:IService1_CreditCardPaymentRefund_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreditCardPaymentRefundResponse" message="tns:IService1_CreditCardPaymentRefund_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnyProcByParams">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAnyProcByParams" message="tns:IService1_getAnyProcByParams_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAnyProcByParamsResponse" message="tns:IService1_getAnyProcByParams_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMultipleCursor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getMultipleCursor" message="tns:IService1_getMultipleCursor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getMultipleCursorResponse" message="tns:IService1_getMultipleCursor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getReport" message="tns:IService1_getReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getReportResponse" message="tns:IService1_getReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDATA">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDATA" message="tns:IService1_GetDATA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDATAResponse" message="tns:IService1_GetDATA_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ServerInsUpd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ServerInsUpd" message="tns:IService1_ServerInsUpd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ServerInsUpdResponse" message="tns:IService1_ServerInsUpd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnyProcByNamelessParam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getAnyProcByNamelessParam" message="tns:IService1_getAnyProcByNamelessParam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getAnyProcByNamelessParamResponse" message="tns:IService1_getAnyProcByNamelessParam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCredential">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getCredential" name="transactionApprover" message="tns:transactionApprover" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getCredentialResponse" name="sessionInfo" message="tns:sessionInfo" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetServiceResult" message="tns:IService1_GetServiceResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetServiceResultResponse" message="tns:IService1_GetServiceResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceResultMulti">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetServiceResultMulti" message="tns:IService1_GetServiceResultMulti_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetServiceResultMultiResponse" message="tns:IService1_GetServiceResultMulti_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreditCardPayment">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreditCardPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditCardPaymentRefund">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreditCardPaymentRefund" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnyProcByParams">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAnyProcByParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMultipleCursor">
+      <soap:operation soapAction="http://tempuri.org/IService1/getMultipleCursor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReport">
+      <soap:operation soapAction="http://tempuri.org/IService1/getReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDATA">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDATA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerInsUpd">
+      <soap:operation soapAction="http://tempuri.org/IService1/ServerInsUpd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnyProcByNamelessParam">
+      <soap:operation soapAction="http://tempuri.org/IService1/getAnyProcByNamelessParam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCredential">
+      <soap:operation soapAction="http://tempuri.org/IService1/getCredential" style="document" />
+      <wsdl:input name="transactionApprover">
+        <soap:header message="tns:transactionApprover_Headers" part="affiliateApprover" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sessionInfo">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceResult">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetServiceResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceResultMulti">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetServiceResultMulti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

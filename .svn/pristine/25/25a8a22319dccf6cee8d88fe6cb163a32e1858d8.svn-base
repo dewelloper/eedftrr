@@ -1,0 +1,532 @@
+﻿using Atlas.Efes.Core;
+using Atlas.Efes.GIBModel;
+using Atlas.Efes.Resources;
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.Xml;
+using Atlas.Efes.Core.Extensions;
+using Atlas.Efes.DataContext;
+using System.IO;
+using Atlas.Efes.ReceiverIntegrationService.SignatureServiceProxy;
+using System.Text;
+using System.Xml.Linq;
+using Atlas.Efes.ReceiverIntegrationService.SenderIntegrationServiceProxy;
+using System.Diagnostics;
+namespace Atlas.Efes.ReceiverIntegrationService
+{
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    public class ReceiverIntegrationService : IReceiverIntegrationService
+    {
+        private string applicationActivityLogPath = string.Empty;
+        public sendDocumentResponse sendDocument(sendDocument request)
+        {
+            sendDocumentResponse sendResponse = new sendDocumentResponse();
+            string baseAppPath = AppDomain.CurrentDomain.BaseDirectory;
+            StandardBusinessDocumentInfo businessDocument = null;
+            try
+            {
+                string fileName = request.documentRequest.fileName;
+                string applicationInstanceIdentifier = fileName.ToString().ToUpper();
+
+                if (applicationInstanceIdentifier.EndsWith(".ZIP"))
+                {
+                    applicationInstanceIdentifier = applicationInstanceIdentifier.Replace(".ZIP", "");
+                }
+
+                applicationActivityLogPath = baseAppPath + string.Format("{0}_ActivityLogs.txt", applicationInstanceIdentifier.Replace("-", ""));
+
+                ActivitiyLog(PostboxActivities.Start);
+
+                string hash = request.documentRequest.hash;
+                base64Binary binaryData = request.documentRequest.binaryData;
+                string appPath = AppDomain.CurrentDomain.BaseDirectory;
+                string zipReferenceFilePath = appPath + string.Format("{0}.zip", applicationInstanceIdentifier);
+
+
+                //BinaryData Process...
+                ActivitiyLog(PostboxActivities.BinaryData_Process_Started);
+                FileProcess.SaveByteArray(zipReferenceFilePath, binaryData.Value);
+                ActivitiyLog(PostboxActivities.BinaryData_Process_Ended);
+
+
+                //XmlLoad Process...
+                ActivitiyLog(PostboxActivities.Xml_Load_Process_Started);
+                XmlDocument document = FileProcess.LoadXmlFromZip(zipReferenceFilePath);
+                ActivitiyLog(PostboxActivities.Xml_Load_Process_Ended);
+
+                string postBoxInstanceIdentifier = AppHelper.GetGuid();
+
+                XmlNamespaceManager namespaces = new XmlNamespaceManager(document.NameTable);
+                namespaces.AddNamespace("sh", "http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader");
+                namespaces.AddNamespace("ef", "http://www.efatura.gov.tr/package-namespace");
+                namespaces.AddNamespace("cbc", "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2");
+                namespaces.AddNamespace("cac", "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2");
+                namespaces.AddNamespace("ext", "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2");
+
+
+                ActivitiyLog(PostboxActivities.Document_Parsing_Started);
+                var documentNode = document.SelectSingleNode("//sh:StandardBusinessDocument", namespaces);
+                var documentHeaderNode = documentNode.ChildNodes[0];
+
+                var senderInfoNode = documentHeaderNode.GetSingleNode("//sh:Sender", namespaces);
+                var receiverInfoNode = documentHeaderNode.GetSingleNode("//sh:Receiver", namespaces);
+                var documentIdentificationNode = documentHeaderNode.GetSingleNode("//sh:DocumentIdentification", namespaces);
+
+                var senderIdentifier = senderInfoNode.ChildNodes[0].InnerText;
+                var receiverIdentifier = receiverInfoNode.ChildNodes[0].InnerText;
+
+                var senderIdentificationTitle = senderInfoNode.ChildNodes[1].ChildNodes[0].InnerText;
+                var senderIdentification = senderInfoNode.ChildNodes[2].ChildNodes[0].InnerText;
+
+                var receiverIdentificationTitle = receiverInfoNode.ChildNodes[1].ChildNodes[0].InnerText;
+                var receiverIdentification = receiverInfoNode.ChildNodes[2].ChildNodes[0].InnerText;
+
+                var instanceIdentifier = documentIdentificationNode.GetSingleNode("//sh:InstanceIdentifier", namespaces).InnerText;
+
+                //CreatingBusinessDocument...
+                businessDocument = new StandardBusinessDocumentInfo()
+                {
+                    StandardBusinessDocumentHeader = new StandardBusinessDocumentHeaderInfo()
+                    {
+                        HeaderVersion = "1.0",
+                        DocumentIdentification = new DocumentIdentificationInfo()
+                        {
+                            CreationDateAndTime = DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss"),
+                            Type = "SYSTEMENVELOPE",
+                            InstanceIdentifier = postBoxInstanceIdentifier,
+                            TypeVersion = "1.2",
+                        }
+                    },
+                };
+
+                businessDocument.StandardBusinessDocumentHeader.Receiver = new ReceiverInfo();
+                businessDocument.StandardBusinessDocumentHeader.Receiver.Identifier = senderIdentifier;
+
+                businessDocument.StandardBusinessDocumentHeader.Receiver.ContactInformations = new List<ContactInformation>();
+                businessDocument.StandardBusinessDocumentHeader.Receiver.ContactInformations.Add(new ContactInformation()
+                {
+                    Contact = senderIdentificationTitle,
+                    ContactTypeIdentifier = "UNVAN",
+                });
+
+                businessDocument.StandardBusinessDocumentHeader.Receiver.ContactInformations.Add(new ContactInformation()
+                {
+                    Contact = senderIdentification,
+                    ContactTypeIdentifier = "VKN_TCKN",
+                });
+
+
+                businessDocument.StandardBusinessDocumentHeader.Sender = new SenderInfo();
+                businessDocument.StandardBusinessDocumentHeader.Sender.Identifier = receiverIdentifier;
+                businessDocument.StandardBusinessDocumentHeader.Sender.ContactInformations = new List<ContactInformation>();
+                businessDocument.StandardBusinessDocumentHeader.Sender.ContactInformations.Add(new ContactInformation()
+                {
+                    Contact = receiverIdentificationTitle,
+                    ContactTypeIdentifier = "UNVAN",
+                });
+
+                businessDocument.StandardBusinessDocumentHeader.Sender.ContactInformations.Add(new ContactInformation()
+                {
+                    Contact = receiverIdentification,
+                    ContactTypeIdentifier = "VKN_TCKN",
+                });
+
+
+                var partyInfo = PartyInfoDataContext.Instance.GetCustomerByIdentification(receiverIdentification);
+                if (partyInfo.Result == null)
+                {
+                    throw new NotImplementedException("DATABASE_ERROR");
+                }
+
+                string outboxDirectory = AppDomain.CurrentDomain.BaseDirectory + string.Format("Outbox_{0}", senderIdentification);
+                if (!Directory.Exists(outboxDirectory))
+                {
+                    Directory.CreateDirectory(outboxDirectory);
+                }
+
+                var senderPartyInfo = partyInfo.Result;
+
+                var elementListNode = document.SelectSingleNode("//sh:StandardBusinessDocument/ef:Package/Elements/ElementList", namespaces);
+                var applicationXml = elementListNode.InnerXml;
+                document.LoadXml(applicationXml);
+
+                XmlNodeList nodeList = document.ChildNodes;
+                XmlNode node = nodeList[0];
+                string signatureXml = applicationXml;
+
+                if (node == null)
+                {
+                    throw new NotImplementedException("NO_INVOICE");
+                }
+
+                if (node.ChildNodes.Count == 0)
+                {
+                    throw new NotImplementedException("INVALID_INVOICE");
+                }
+
+                signatureXml = "<?xml version='1.0' encoding='utf-8' standalone='no'?>" + signatureXml;
+
+                
+                XmlNode signatureNode = node.GetSingleNode("//ext:UBLExtensions", namespaces);
+                SignatureWSClient wsClient = new SignatureWSClient();
+                
+                string ublVersionID = node["cbc:UBLVersionID"].InnerText;
+                string customizationID = node["cbc:CustomizationID"].InnerText;
+                string profileID = node["cbc:ProfileID"].InnerText;
+                string id = node.GetNodeValueByName("cbc:ID");
+                //string copyIndicator = node.GetNodeValueByName("cbc:CopyIndicator");
+                string uuid = node.GetNodeValueByName("cbc:UUID");
+                //string issueDate = node.GetNodeValueByName("cbc:IssueDate");
+                string invoiceTypeCode = node.GetNodeValueByName("cbc:InvoiceTypeCode");
+                //string documentCurrencyCode = node.GetNodeValueByName("cbc:DocumentCurrencyCode");
+                //List<string> notes = node.GetMutliNodes("//cbc:Note", namespaces);
+                //string lineCountNumeric = node.GetNodeValueByName("cbc:LineCountNumeric");
+
+                ApplicationResponseInfo postBoxResponse = new ApplicationResponseInfo()
+                {
+                    CustomizationID = customizationID,
+                    ID = id,
+                    IssueDate = DateTime.Now.ToString().ToGibDocumentDate(),
+                    IssueTime = DateTime.Now.ToString("hh:mm:ss"),
+                    Notes =
+                    {
+                        "Uygulama Yanıt",
+                    },
+                    ProfileID = "UBL-TR-PROFILE-1",
+                    UBLVersionID = ublVersionID,
+                    UUID = AppHelper.GetGuid(),
+                    UBLExtensions = new UBLExtensionsInfo()
+                    {
+                        UBLExtension = new UBLExtensionInfo()
+                        {
+                            ExtensionContent = new ExtensionContentInfo(),
+                        }
+                    },
+                    SenderParty = new SenderPartyInfo()
+                    {
+                        Contact = senderPartyInfo.Contact,
+                        PartyIdentifications = senderPartyInfo.PartyIdentifications,
+                        WebsiteURI = senderPartyInfo.WebsiteURI,
+                        PartyTaxScheme = senderPartyInfo.PartyTaxScheme,
+                        Person = senderPartyInfo.Person,
+                        PartyName = senderPartyInfo.PartyName,
+                        PostalAddress = senderPartyInfo.PostalAddress,
+                    }
+                };
+
+                ActivitiyLog("app-end");
+                string accountingSupplierPartyXml = node.GetSingleNodeXml("//cac:AccountingSupplierParty//cac:Party", namespaces, false);
+                document = XDocument.Parse(accountingSupplierPartyXml, LoadOptions.PreserveWhitespace).ToXmlDocument();
+                XmlNode supplierPartyNode = document.ChildNodes[0];
+
+                AccountingSupplierPartyInfo accountingSupplierParty = new AccountingSupplierPartyInfo();
+                accountingSupplierParty.Party = new PartyInfo();
+                string webSiteUri = supplierPartyNode.GetNodeValueByName("cbc:WebsiteURI");
+
+                if (webSiteUri != null)
+                {
+                    accountingSupplierParty.Party.WebsiteURI = webSiteUri;
+                }
+
+                XmlNodeList partyIdentifications = supplierPartyNode.SelectNodes("//cac:PartyIdentification", namespaces);
+
+                List<PartyIdentificationInfo> parties = new List<PartyIdentificationInfo>();
+                foreach (XmlNode item in partyIdentifications)
+                {
+                    string identification = item.ChildNodes[0].InnerText;
+                    string schemeID = item.ChildNodes[0].Attributes["schemeID"].Value;
+
+                    parties.Add(new PartyIdentificationInfo()
+                    {
+                        ID = new IDContainerInfo()
+                        {
+                            schemeID = schemeID,
+                            Value = identification,
+                        }
+                    });
+                }
+                accountingSupplierParty.Party.PartyIdentifications = parties;
+                XmlNode partyNameNode = supplierPartyNode.SelectSingleNode("//cac:PartyName", namespaces);
+
+                if (partyNameNode != null)
+                {
+                    accountingSupplierParty.Party.PartyName = new PartyNameInfo();
+                    if (partyNameNode.ChildNodes[0] != null)
+                    {
+                        accountingSupplierParty.Party.PartyName.Name = partyNameNode.ChildNodes[0].InnerText;
+                    }
+                }
+
+                //POSTAL ADDRESS PARSING....
+                XmlNode postalAddressNode = supplierPartyNode.SelectSingleNode("//cac:PostalAddress", namespaces);
+                if (postalAddressNode != null)
+                {
+                    accountingSupplierParty.Party.PostalAddress = new PostalAddressInfo()
+                    {
+                        BuildingName = postalAddressNode.GetNodeValueByName("cbc:BuildingName"),
+                        StreetName = postalAddressNode.GetNodeValueByName("cbc:BuildingName"),
+                        CitySubdivisionName = postalAddressNode.GetNodeValueByName("cbc:CitySubdivisionName"),
+                        CityName = postalAddressNode.GetNodeValueByName("cbc:CityName"),
+                        Region = postalAddressNode.GetNodeValueByName("cbc:Region"),
+                        PostalZone = postalAddressNode.GetNodeValueByName("cbc:PostalZone"),
+                        BuildingNumber = postalAddressNode.GetNodeValueByName("cbc:BuildingNumber"),
+                        Room = postalAddressNode.GetNodeValueByName("cbc:Room"),
+                    };
+
+                    if (postalAddressNode.GetSingleNode("cac:Country", namespaces) != null)
+                    {
+                        accountingSupplierParty.Party.PostalAddress.Country = new CountryIndicatorInfo();
+                        var countryNode = postalAddressNode.GetSingleNode("cac:Country", namespaces);
+                        if (countryNode.ChildNodes.Count > 0)
+                        {
+                            accountingSupplierParty.Party.PostalAddress.Country.Name = countryNode.ChildNodes[0].InnerText;
+                        }
+                    }
+                }
+
+                XmlNode partyTaxSchemeNode = supplierPartyNode.SelectSingleNode("cac:PartyTaxScheme", namespaces);
+
+                if (partyTaxSchemeNode != null)
+                {
+                    accountingSupplierParty.Party.PartyTaxScheme = new PartyTaxSchemeInfo();
+                    accountingSupplierParty.Party.PartyTaxScheme.TaxScheme = new TaxSchemeInfo();
+                    if (partyTaxSchemeNode.ChildNodes[0] != null)
+                    {
+                        if (partyTaxSchemeNode.ChildNodes[0].ChildNodes[0] != null)
+                        {
+                            accountingSupplierParty.Party.PartyTaxScheme.TaxScheme.Name = partyTaxSchemeNode.ChildNodes[0].ChildNodes[0].InnerText;
+                        }
+                    }
+                }
+
+                XmlNode contactNode = supplierPartyNode.SelectSingleNode("cac:Contact", namespaces);
+
+                if (contactNode != null)
+                {
+                    accountingSupplierParty.Party.Contact = new ContactIndicatorInfo()
+                    {
+                        ElectronicMail = contactNode.GetNodeValueByName("cbc:ElectronicMail"),
+                        Telefax = contactNode.GetNodeValueByName("cbc:Telefax"),
+                        Telephone = contactNode.GetNodeValueByName("cbc:Telephone"),
+                    };
+                }
+
+                XmlNode personNode = supplierPartyNode.SelectSingleNode("cac:Person", namespaces);
+
+                if (personNode != null)
+                {
+                    accountingSupplierParty.Party.Person = new PersonInfo()
+                    {
+                        FamilyName = personNode.GetNodeValueByName("cbc:FamilyName"),
+                        FirstName = personNode.GetNodeValueByName("cbc:FirstName"),
+                    };
+                }
+
+                ActivitiyLog(PostboxActivities.Document_Parsing_Ended);
+
+
+                //Schema & Schematron & Object Checkes....
+                //Custom Verify Mode...
+               
+                //1---VerifySign...
+                byte[] signArray = Encoding.UTF8.GetBytes(signatureXml);
+                var verifyResult = wsClient.verify(signArray);
+
+                string applicationStatusMessage = string.Empty;
+                string applicationStatusCode = string.Empty;
+
+
+                if (!verifyResult.isVerified)
+                {
+                    applicationStatusCode = "1177";
+                    applicationStatusMessage = PostboxMessages.STATUS_CODE_1177;
+
+                    string signatureErrorLogPath = baseAppPath + @"\" + string.Format("{0}_SignError.txt", applicationInstanceIdentifier);
+
+                    if (!File.Exists(signatureErrorLogPath))
+                    {
+                        File.Create(signatureErrorLogPath).Close();
+                    }
+                    else
+                    {
+                        File.AppendAllText(signatureErrorLogPath, "\n\n--------\n\n");
+                    }
+                    string errMessage = verifyResult.errorMessage + "\n" + verifyResult.errorCode + "\n" + verifyResult.verifyLog;
+                    File.AppendAllText(signatureErrorLogPath, errMessage);
+                }
+
+                if (applicationStatusCode == string.Empty && applicationStatusMessage == string.Empty)
+                {
+                    applicationStatusCode = "1200";
+                    applicationStatusMessage = PostboxMessages.STATUS_CODE_1200;
+                }
+
+
+
+                postBoxResponse.ReceiverParty = new ReceiverPartyInfo()
+                {
+                    Contact = accountingSupplierParty.Party.Contact,
+                    PartyIdentifications = accountingSupplierParty.Party.PartyIdentifications,
+                    PartyName = accountingSupplierParty.Party.PartyName,
+                    PartyTaxScheme = accountingSupplierParty.Party.PartyTaxScheme,
+                    Person = accountingSupplierParty.Party.Person,
+                    PostalAddress = accountingSupplierParty.Party.PostalAddress,
+                    WebsiteURI = accountingSupplierParty.Party.WebsiteURI,
+                };
+
+                postBoxResponse.DocumentResponse = new DocumentResponseInfo()
+                {
+                    DocumentReference = new DocumentReferenceInfo()
+                    {
+                        DocumentType = "SENDERENVELOPE",
+                        DocumentTypeCode = "SENDERENVELOPE",
+                        ID = applicationInstanceIdentifier,
+                        IssueDate = DateTime.Now.ToString().ToGibDocumentDate(),
+                    },
+                    Response = new ResponseInfo()
+                    {
+                        Description = "SystemApplicationResponse",
+                        ReferenceID = AppHelper.GetGuid(),
+                        ResponseCode = "S_APR",
+                    },
+                    LineResponse = new LineResponseInfo()
+                    {
+                        LineReference = new LineReferenceInfo()
+                        {
+                            LineID = "0",
+                            DocumentReference = new DocumentReferenceInfo()
+                            {
+                                ID = applicationInstanceIdentifier,
+                                IssueDate = DateTime.Now.ToString().ToGibDocumentDate(),
+                            },
+                        },
+                        Response = new ResponseInfo()
+                        {
+                            Description = applicationStatusMessage,
+                            ReferenceID = AppHelper.GetGuid(),
+                            ResponseCode = applicationStatusCode,
+                        }
+                    }
+                };
+
+                businessDocument.Package = new PackageInfo();
+                businessDocument.Package.Elements = new ElementsInfo();
+                businessDocument.Package.Elements.ElementCount = 1;
+                businessDocument.Package.Elements.ElementType = "APPLICATIONRESPONSE";
+                businessDocument.Package.Elements.ElementList = new List<ElementListInfo>();
+                businessDocument.Package.Elements.ElementList.Add(new ElementListInfo()
+                {
+                    ApplicationResponse = postBoxResponse,
+                });
+
+                //SignDocument...
+                ActivitiyLog(PostboxActivities.Sign_Service_Started);
+                string xml = businessDocument.SerializeObject<StandardBusinessDocumentInfo>();
+                xml = xml.Replace("cac:ID", "cbc:ID");
+
+                string signXml = CreateSignatureElement(xml, id);
+
+                ActivitiyLog(PostboxActivities.Sign_Service_Ended);
+
+                string outboxPath = outboxDirectory;
+                if (!Directory.Exists(outboxPath))
+                {
+                    Directory.CreateDirectory(outboxPath);
+                }
+
+                string xmlFilePath = outboxPath + @"\" + string.Format("{0}.xml", postBoxInstanceIdentifier);
+                string zipFilePath = outboxPath + @"\" + string.Format("{0}.zip", postBoxInstanceIdentifier);
+
+                document = new XmlDocument();
+                document.LoadXml(signXml);
+                document.Save(xmlFilePath);
+                byte[] zipByteArray = FileProcess.CreateZipFile(xmlFilePath, zipFilePath);
+
+
+                ActivitiyLog(PostboxActivities.Document_Sending_Started);
+                DocumentResponse documentResult = null;
+                using (SenderIntegrationServiceClient client = new SenderIntegrationServiceClient())
+                {
+                    documentResult = client.SendDocument(new DocumentInfo()
+                    {
+                        BinaryData = zipByteArray,
+                        FileName = string.Format("{0}.zip", postBoxInstanceIdentifier),
+                        Hash = CryptoHelper.GetChecksum(zipFilePath),
+                    });
+                }
+                ActivitiyLog(PostboxActivities.Document_Sending_Ended);
+
+                if (documentResult == null)
+                {
+                    throw new NotImplementedException("SENDER_NOT_WORKING");
+                }
+
+                sendResponse = new sendDocumentResponse()
+                {
+                    documentResponse = new documentReturnType()
+                    {
+                        hash = documentResult.Hash,
+                        msg = documentResult.Message,
+                    }
+                };
+                ActivitiyLog(string.Format("[Msg]:{0}-[InstanceIdentifier]:{1}", sendResponse.documentResponse.msg, postBoxInstanceIdentifier));
+                ActivitiyLog(PostboxActivities.End);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "DATABASE_ERROR")
+                {
+
+                }
+
+                if (ex.Message == "NO_INVOICE")
+                {
+
+                }
+
+                if (ex.Message == "INVALID_INVOICE")
+                {
+
+                }
+
+
+                string logPath = "xxx.txt";
+
+
+                var message = ex.Message;
+
+                var path = baseAppPath + logPath;
+
+                if (!File.Exists(path))
+                {
+                    File.Create(path).Close();
+                }
+
+                File.AppendAllText(path, message);
+            }
+            return sendResponse;
+        }
+
+
+        private string CreateSignatureElement(string xml, string id = "")
+        {
+            byte[] signArray = UTF8Encoding.UTF8.GetBytes(xml);
+            string certificateID = "1020409972";
+            string signatureID = string.Format("{0}", id);
+            short value = 1;
+            SignatureServiceProxy.SignatureWSClient client = new SignatureWSClient();
+            signatureResponse singResponse = client.sign(signArray, certificateID, signatureID, value);
+            return UTF8Encoding.UTF8.GetString(singResponse.signedFile);
+        }
+
+        private void ActivitiyLog(string message)
+        {
+            string basicLogMessage = string.Format("[{0}] ------- [Process Date] : {1}\r\n", message, DateTime.Now.ToString());
+            FileProcess.WriteBasicLog(applicationActivityLogPath, basicLogMessage);
+        }
+
+    }
+}

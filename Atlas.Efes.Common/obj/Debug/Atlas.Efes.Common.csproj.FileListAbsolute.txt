@@ -1,0 +1,9 @@
+D:\Project\Atlas.Efes\Atlas.Efes.Common\bin\Debug\Atlas.Efes.Common.dll
+D:\Project\Atlas.Efes\Atlas.Efes.Common\bin\Debug\Atlas.Efes.Common.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.Common\obj\Debug\Atlas.Efes.Common.dll
+D:\Project\Atlas.Efes\Atlas.Efes.Common\obj\Debug\Atlas.Efes.Common.pdb
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Common\bin\Debug\Atlas.Efes.Common.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Common\bin\Debug\Atlas.Efes.Common.pdb
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Common\obj\Debug\Atlas.Efes.Common.csprojResolveAssemblyReference.cache
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Common\obj\Debug\Atlas.Efes.Common.dll
+D:\SvnProjects\trunk\Atlas.Efes\Atlas.Efes.Common\obj\Debug\Atlas.Efes.Common.pdb

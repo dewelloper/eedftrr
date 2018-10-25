@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02E800DF-B673-482E-8B6D-BF94A046E743}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlas.Efes.Portal</RootNamespace>
+    <AssemblyName>Atlas.Efes.Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxClientHelper.aspx" />
+    <Content Include="assets\admin-tools\admin-forms\css\admin-forms.css" />
+    <Content Include="assets\admin-tools\admin-forms\js\advanced\steps\jquery.steps.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery-tcm-month.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery-ui-monthpicker.min.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery-ui-timepicker.min.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery-ui-touch-punch.min.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery.spectrum.min.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery.stepper.min.js" />
+    <Content Include="assets\admin-tools\admin-forms\js\jquery.validate.min.js" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-dock\dockmodal.css" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-dock\dockmodal.js" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-dock\sprite.png" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-modal\adminmodal.css" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-panels\adminpanels.css" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-panels\adminpanels.js" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-panels\jquery.ui.touch-punch.min.js" />
+    <Content Include="assets\admin-tools\admin-plugins\admin-panels\json2.js" />
+    <Content Include="assets\fonts\font-awesome\fontawesome-webfont78ce.svg" />
+    <Content Include="assets\fonts\glyphicons-pro\glyphicons-regular.svg" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\fonts\icomoon\icomoon.css" />
+    <Content Include="assets\fonts\icomoon\icomoon.svg" />
+    <Content Include="assets\fonts\octicons\octicons.svg" />
+    <Content Include="assets\fonts\octicons\octiconsd41d.html" />
+    <Content Include="assets\fonts\stateface\stateface-regular-webfont.svg" />
+    <Content Include="assets\fonts\zocial\zocial-regular-webfont.svg" />
+    <Content Include="assets\img\avatars\1.jpg" />
+    <Content Include="assets\img\avatars\2.jpg" />
+    <Content Include="assets\img\avatars\3.jpg" />
+    <Content Include="assets\img\avatars\4.jpg" />
+    <Content Include="assets\img\avatars\5.jpg" />
+    <Content Include="assets\img\avatars\6.jpg" />
+    <Content Include="assets\img\avatars\7.jpg" />
+    <Content Include="assets\img\avatars\8.jpg" />
+    <Content Include="assets\img\avatars\profile_avatar.jpg" />
+    <Content Include="assets\img\external\highcharts_logo.html" />
+    <Content Include="assets\img\favicon.ico" />
+    <Content Include="assets\img\flag_icons\flag-sm.png" />
+    <Content Include="assets\img\flag_icons\flag-xs.png" />
+    <Content Include="assets\img\logos\logo.png" />
+    <Content Include="assets\img\logos\logo_grey.png" />
+    <Content Include="assets\img\logos\logo_white.png" />
+    <Content Include="assets\img\patterns\backgrounds\1.jpg" />
+    <Content Include="assets\img\patterns\topbar-bg.jpg" />
+    <Content Include="assets\img\patterns\topbar-bg2.jpg" />
+    <Content Include="assets\img\patterns\topbar-bg3.jpg" />
+    <Content Include="assets\img\plugins\arrow_left_12x12.png" />
+    <Content Include="assets\img\plugins\arrow_right_12x12.png" />
+    <Content Include="assets\img\sprites\favicons.png" />
+    <Content Include="assets\img\sprites\news-logo_sprite.png" />
+    <Content Include="assets\img\stock\1.jpg" />
+    <Content Include="assets\img\stock\10.jpg" />
+    <Content Include="assets\img\stock\12.jpg" />
+    <Content Include="assets\img\stock\14.jpg" />
+    <Content Include="assets\img\stock\2.jpg" />
+    <Content Include="assets\img\stock\3.jpg" />
+    <Content Include="assets\img\stock\4.jpg" />
+    <Content Include="assets\img\stock\5.jpg" />
+    <Content Include="assets\img\stock\6.jpg" />
+    <Content Include="assets\img\stock\7.jpg" />
+    <Content Include="assets\img\stock\8.jpg" />
+    <Content Include="assets\img\stock\9.jpg" />
+    <Content Include="assets\js\bootstrap\bootstrap.min.js" />
+    <Content Include="assets\js\bootstrap\holder.min.js" />
+    <Content Include="assets\js\demo.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\pages\charts\d3.js" />
+    <Content Include="assets\js\pages\charts\flot.js" />
+    <Content Include="assets\js\pages\charts\highcharts.js" />
+    <Content Include="assets\js\pages\login\EasePack.min.js" />
+    <Content Include="assets\js\pages\login\login.js" />
+    <Content Include="assets\js\pages\login\rAF.js" />
+    <Content Include="assets\js\pages\login\TweenLite.min.js" />
+    <Content Include="assets\js\pages\widgets.js" />
+    <Content Include="assets\js\utility\highlight\styles\googlecode.css" />
+    <Content Include="assets\js\utility\jvectormap\assets\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="assets\js\utility\utility.js" />
+    <Content Include="assets\skin\default_skin\css\theme.css" />
+    <Content Include="assets\skin\default_skin\img\patterns\5.html" />
+    <Content Include="assets\skin\default_skin\img\plugins\slider-knob.html" />
+    <Content Include="CreateInvoice.aspx" />
+    <Content Include="css\features.css" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="images\closerImage.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\noavatar.png" />
+    <Content Include="js\app.functions.js" />
+    <Content Include="js\app.core.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jqueryui.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="vendor\jquery\jquery-1.11.1.min.js" />
+    <Content Include="vendor\jquery\jquery_ui\jquery-ui.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjaxClientHelper.aspx.cs">
+      <DependentUpon>AjaxClientHelper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxClientHelper.aspx.designer.cs">
+      <DependentUpon>AjaxClientHelper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateInvoice.aspx.cs">
+      <DependentUpon>CreateInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateInvoice.aspx.designer.cs">
+      <DependentUpon>CreateInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMaster.Master.cs">
+      <DependentUpon>MainMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMaster.Master.designer.cs">
+      <DependentUpon>MainMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\fonts\font-awesome\fontawesome-webfont78ce.eot" />
+    <Content Include="assets\fonts\font-awesome\fontawesome-webfont78ce.ttf" />
+    <Content Include="assets\fonts\font-awesome\fontawesome-webfont78ce.woff" />
+    <Content Include="assets\fonts\font-awesome\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\fonts\glyphicons-pro\glyphicons-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-pro\glyphicons-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-pro\glyphicons-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-pro\glyphicons-regulard41d.eot" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\fonts\icomoon\icomoon.eot" />
+    <Content Include="assets\fonts\icomoon\icomoon.ttf" />
+    <Content Include="assets\fonts\icomoon\icomoon.woff" />
+    <Content Include="assets\fonts\icomoon\icomoond41d.eot" />
+    <Content Include="assets\fonts\octicons\octicons.ttf" />
+    <Content Include="assets\fonts\octicons\octicons.woff" />
+    <Content Include="assets\fonts\open-sans\OpenSans-Bold.ttf" />
+    <Content Include="assets\fonts\open-sans\OpenSans-ExtraBold.ttf" />
+    <Content Include="assets\fonts\open-sans\OpenSans-Light.ttf" />
+    <Content Include="assets\fonts\open-sans\OpenSans-Regular.ttf" />
+    <Content Include="assets\fonts\open-sans\OpenSans-SemiBold.ttf" />
+    <Content Include="assets\fonts\stateface\stateface-regular-webfont.eot" />
+    <Content Include="assets\fonts\stateface\stateface-regular-webfont.ttf" />
+    <Content Include="assets\fonts\stateface\stateface-regular-webfont.woff" />
+    <Content Include="assets\fonts\stateface\stateface-regular-webfontd41d.eot" />
+    <Content Include="assets\fonts\zocial\zocial-regular-webfont.eot" />
+    <Content Include="assets\fonts\zocial\zocial-regular-webfont.ttf" />
+    <Content Include="MainMaster.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atlas.Efes.Common\Atlas.Efes.Common.csproj">
+      <Project>{bc1f5cef-883e-4778-8ae8-f82bfb8c1db8}</Project>
+      <Name>Atlas.Efes.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.Core\Atlas.Efes.Core.csproj">
+      <Project>{a5ed81ce-1041-4898-8965-69a007cb70f3}</Project>
+      <Name>Atlas.Efes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.DataContext\Atlas.Efes.DataContext.csproj">
+      <Project>{2cd3f4b4-d7fa-40fb-8657-9a8693baea4c}</Project>
+      <Name>Atlas.Efes.DataContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.GIBModel\Atlas.Efes.GIBModel.csproj">
+      <Project>{9ff52f88-b4b1-4764-9a60-23081e2a53bc}</Project>
+      <Name>Atlas.Efes.GIBModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11582</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3995/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

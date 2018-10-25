@@ -1,0 +1,60 @@
+﻿using Atlas.Efes.Common.Model;
+using Atlas.Efes.OracleClient;
+using Atlas.Efes.OracleClient.OracleServiceProxy;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+
+namespace Atlas.Efes.DataContext
+{
+    public class UserDataContext : BaseDataContext
+    {
+        private static readonly Lazy<UserDataContext> lazyInstance =
+          new Lazy<UserDataContext>(() => new UserDataContext());
+
+        public static UserDataContext Instance { get { return lazyInstance.Value; } }
+
+
+        public DatabaseResult<UserInfo> LoginUser(UserInfo userInfo)
+        {
+            DatabaseResult<UserInfo> databaseResult = new DatabaseResult<UserInfo>();
+
+            List<Params> parameters = new List<Params>();
+            parameters.AddOracleParameters("P_Username", userInfo.Username);
+            parameters.AddOracleParameters("P_Password", userInfo.Password);
+
+            ServiceResult serviceResult = ExecuteOracleClient((param) =>
+            {
+                using (OracleDataClient client = new OracleClient.OracleDataClient())
+                {
+                    serviceResult = client.Execute("SP_LOGINUSER", parameters, CreateOracleRefParameters());
+                }
+            });
+
+            string errorMessage = string.Empty;
+            DataTable dataTable = GetDataResult(serviceResult, out errorMessage);
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                databaseResult.IsSuccess = false;
+                databaseResult.Message = errorMessage;
+            }
+            else
+            {
+                DataRow dataRow = dataTable.Rows[0];
+                databaseResult.Result = new UserInfo()
+                {
+                    ApiKey = dataRow.Get<string>("APIKEY"),
+                    Username = dataRow.Get<string>("USERNAME"),
+                };
+
+                databaseResult.IsSuccess = true;
+                databaseResult.DocumentID = 0;
+            }
+
+            return databaseResult;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="620fcc61-43b2-4d0d-83d2-abf729cdd2ef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SenderIntegrationService3.xsd" MetadataType="Schema" ID="243a69f2-e336-48c0-855d-b700417885c2" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd6" />
+    <MetadataFile FileName="SenderIntegrationService1.xsd" MetadataType="Schema" ID="cd470508-d5f3-4156-b603-073dbbc0a97b" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SenderIntegrationService.disco" MetadataType="Disco" ID="901d805e-9d5b-4f59-af91-7af889d6029f" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?disco" />
+    <MetadataFile FileName="SenderIntegrationService2.xsd" MetadataType="Schema" ID="cfacb242-3bae-48c4-8a01-4bbda04350cf" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SenderIntegrationService31.xsd" MetadataType="Schema" ID="1f2b1292-4ac5-4fe9-a492-b4e23bd00dd6" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SenderIntegrationService.xsd" MetadataType="Schema" ID="4b19fee2-e184-48b2-9bfe-12b93492b752" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SenderIntegrationService32.xsd" MetadataType="Schema" ID="0aa53e9d-4cb3-4992-8064-9773d7b5713c" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd5" />
+    <MetadataFile FileName="SenderIntegrationService33.xsd" MetadataType="Schema" ID="ef7fb7ef-23b1-419f-bc38-eb8676c8a061" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SenderIntegrationService.wsdl" MetadataType="Wsdl" ID="ebbc9f1e-9573-474a-9675-9323c1ab6946" SourceId="1" SourceUrl="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

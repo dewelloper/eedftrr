@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <system.serviceModel>
+        <bindings>
+            <customBinding>
+                <binding name="EFaturaSoapBinding">
+                    <mtomMessageEncoding messageVersion="Soap12" />
+                    <httpTransport />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://merkeztest.efatura.gov.tr/EFaturaMerkez/services/EFatura"
+                binding="customBinding" bindingConfiguration="EFaturaSoapBinding"
+                contract="GIBServiceProxy.EFaturaPortType" name="EFaturaSoap12" />
+        </client>
+    </system.serviceModel>
+</configuration>

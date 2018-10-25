@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Project\Atlas.Efes\Publish\ReceiverIntegration</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Atlas.Efes.Common.dll">
+      <publishTime>11/15/2015 18:40:39</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.Core.dll">
+      <publishTime>11/15/2015 18:40:39</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.DataContext.dll">
+      <publishTime>11/15/2015 18:40:40</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.Engine.dll">
+      <publishTime>11/15/2015 18:40:40</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.GIBModel.dll">
+      <publishTime>09/11/2015 10:58:55</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.OracleClient.dll">
+      <publishTime>06/11/2015 11:31:41</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.ReceiverIntegrationService.dll">
+      <publishTime>11/15/2015 22:31:37</publishTime>
+    </File>
+    <File Include="bin/Atlas.Efes.Resources.dll">
+      <publishTime>11/13/2015 20:40:11</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>07/08/2011 04:01:40</publishTime>
+    </File>
+    <File Include="Properties/DataSources/Atlas.Efes.Common.ServiceModel.ApplicationResponse.datasource">
+      <publishTime>11/11/2015 20:01:49</publishTime>
+    </File>
+    <File Include="Properties/DataSources/Atlas.Efes.Common.ServiceModel.DocumentResponse.datasource">
+      <publishTime>11/11/2015 20:01:49</publishTime>
+    </File>
+    <File Include="ReceiverIntegrationService.svc">
+      <publishTime>05/11/2015 10:14:58</publishTime>
+    </File>
+    <File Include="Service References/SenderIntegrationServiceProxy/Atlas.Efes.ReceiverIntegrationService.SenderIntegrationServiceProxy.DocumentResponse.datasource">
+      <publishTime>05/11/2015 11:11:37</publishTime>
+    </File>
+    <File Include="Service References/SignatureServiceProxy/Atlas.Efes.ReceiverIntegrationService.SignatureServiceProxy.signatureResponse.datasource">
+      <publishTime>05/11/2015 11:53:23</publishTime>
+    </File>
+    <File Include="Service References/SignatureServiceProxy/Atlas.Efes.ReceiverIntegrationService.SignatureServiceProxy.verifyResult.datasource">
+      <publishTime>05/11/2015 11:53:22</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/12/2015 12:57:59</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

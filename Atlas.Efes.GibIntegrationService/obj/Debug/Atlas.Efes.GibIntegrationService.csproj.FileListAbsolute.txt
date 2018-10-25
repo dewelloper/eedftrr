@@ -1,0 +1,5 @@
+D:\Project\Atlas.Efes\Atlas.Efes.GibIntegrationService\bin\Debug\Atlas.Efes.GibIntegrationService.dll.config
+D:\Project\Atlas.Efes\Atlas.Efes.GibIntegrationService\bin\Debug\Atlas.Efes.GibIntegrationService.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GibIntegrationService\bin\Debug\Atlas.Efes.GibIntegrationService.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.GibIntegrationService\obj\Debug\Atlas.Efes.GibIntegrationService.dll
+D:\Project\Atlas.Efes\Atlas.Efes.GibIntegrationService\obj\Debug\Atlas.Efes.GibIntegrationService.pdb

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="SignatureWSPortBinding" maxReceivedMessageSize="999999999"
+                    messageEncoding="Mtom" />
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://176.53.37.197:8080//SignServer/SignatureWS"
+                binding="basicHttpBinding" bindingConfiguration="SignatureWSPortBinding"
+                contract="SingServiceProxy.SignatureWS" name="SignatureWSPort" />
+        </client>
+    </system.serviceModel>
+</configuration>

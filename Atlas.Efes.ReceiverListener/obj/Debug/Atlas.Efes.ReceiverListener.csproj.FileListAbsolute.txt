@@ -1,0 +1,17 @@
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\obj\Debug\Atlas.Efes.ReceiverListener.csprojResolveAssemblyReference.cache
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.ReceiverListener.exe.config
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.ReceiverListener.exe
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.ReceiverListener.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.Common.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.Core.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.DataContext.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.Engine.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Ionic.Zip.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.OracleClient.dll
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.Common.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.Core.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.DataContext.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.Engine.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\bin\Debug\Atlas.Efes.OracleClient.pdb
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\obj\Debug\Atlas.Efes.ReceiverListener.exe
+D:\Project\Atlas.Efes\Atlas.Efes.ReceiverListener\obj\Debug\Atlas.Efes.ReceiverListener.pdb

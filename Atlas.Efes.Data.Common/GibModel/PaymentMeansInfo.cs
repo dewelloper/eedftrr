@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Atlas.Efes.Common.GibModel
+{
+    public class PaymentMeansInfo
+    {
+        public string PaymentMeansCode { get; set; }
+        public string PaymentChannelCode { get; set; }
+        public string PaymentDueDate { get; set; }
+        public string InstructionNote { get; set; }
+
+        public PayeeFinancialAccountInfo PayeeFinancialAccount { get; set; }
+    }
+}

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<configuration>
+
+  <system.web>
+    <compilation debug="true" targetFramework="4.0" />
+  </system.web>
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="BasicHttpBinding_IService1" />
+        <binding name="SignatureWSPortBinding" messageEncoding="Mtom" />
+        <binding name="SenderUnitService">
+          <security mode="Transport" />
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://oraclewcf3.atlasyazilim.com.tr/Service1.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService1"
+        contract="OracleServiceProxy.IService1" name="BasicHttpBinding_IService1" />
+      <endpoint address="http://176.53.37.197:8080//SignServer/SignatureWS"
+        binding="basicHttpBinding" bindingConfiguration="SignatureWSPortBinding"
+        contract="SignatureServiceProxy.SignatureWS" name="SignatureWSPort" />
+      <endpoint address="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc"
+        binding="basicHttpBinding" bindingConfiguration="SenderUnitService"
+        contract="SenderIntegrationProxy.ISenderIntegrationService"
+        name="SenderUnitService" />
+    </client>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior>
+          <serviceMetadata httpGetEnabled="true"/>
+          <serviceDebug includeExceptionDetailInFaults="true"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />
+  </system.serviceModel>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true"/>
+    <directoryBrowse enabled="true"/>
+  </system.webServer>
+
+</configuration>

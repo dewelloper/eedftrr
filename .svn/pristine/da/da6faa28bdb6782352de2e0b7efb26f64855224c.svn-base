@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sh:StandardBusinessDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ef="http://www.efatura.gov.tr/package-namespace" xsi:schemaLocation="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader PackageProxy_1_2.xsd" xmlns:sh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+  <sh:StandardBusinessDocumentHeader>
+    <sh:HeaderVersion>1.0</sh:HeaderVersion>
+    <sh:Sender>
+      <sh:Identifier>usergb</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Atlas Yazılım</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>1020409972</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Sender>
+    <sh:Receiver>
+      <sh:Identifier>GIB</sh:Identifier>
+      <sh:ContactInformation>
+        <sh:Contact>Gelir İdaresi Başkanlığı</sh:Contact>
+        <sh:ContactTypeIdentifier>UNVAN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+      <sh:ContactInformation>
+        <sh:Contact>3900383669</sh:Contact>
+        <sh:ContactTypeIdentifier>VKN_TCKN</sh:ContactTypeIdentifier>
+      </sh:ContactInformation>
+    </sh:Receiver>
+    <sh:DocumentIdentification>
+      <sh:Standard />
+      <sh:TypeVersion>1.0</sh:TypeVersion>
+      <sh:InstanceIdentifier>c4aad6af-de0c-457a-ae1e-1cc7cfc7147a</sh:InstanceIdentifier>
+      <sh:Type>USERENVELOPE</sh:Type>
+      <sh:CreationDateAndTime>29.09.2015 18:07:40</sh:CreationDateAndTime>
+    </sh:DocumentIdentification>
+  </sh:StandardBusinessDocumentHeader>
+  <ef:Package>
+    <Elements>
+      <ElementType>PROCESSUSERACCOUNT</ElementType>
+      <ElementCount>1</ElementCount>
+      <ElementList>
+        <ProcessUserAccount xmlns="http://www.hr-xml.org/3" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:oa="http://www.openapplications.org/oagis/9" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#">
+          <oa:ApplicationArea>
+            <oa:Sender>
+              <oa:LogicalID>1020409972</oa:LogicalID>
+            </oa:Sender>
+            <oa:Receiver />
+            <oa:CreationDateTime>29.09.2015 18:07:40</oa:CreationDateTime>
+            <oa:Signature />
+          </oa:ApplicationArea>
+          <DataArea>
+            <oa:Process />
+            <UserAccount>
+              <UserID>1020409972</UserID>
+              <PersonName>
+                <FormattedName>Arif Tartan</FormattedName>
+              </PersonName>
+              <UserRole>
+                <RoleCode>GB</RoleCode>
+                <RoleName>Gönderici Birim</RoleName>
+              </UserRole>
+              <AuthorizedWorkScope>
+                <WorkScopeCode>urn:mail:defaultgb@atlasyazilim.</WorkScopeCode>
+                <WorkScopeName>Gönderici Birim Etiketi</WorkScopeName>
+              </AuthorizedWorkScope>
+              <AccountConfiguration>
+                <UserOptionCode>2</UserOptionCode>
+              </AccountConfiguration>
+            </UserAccount>
+          </DataArea>
+        </ProcessUserAccount>
+      </ElementList>
+    </Elements>
+  </ef:Package>
+</sh:StandardBusinessDocument>

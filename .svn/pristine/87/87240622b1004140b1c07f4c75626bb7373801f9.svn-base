@@ -1,0 +1,19 @@
+﻿using Atlas.Efes.Common.GibModel.UserProcess;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+
+namespace Atlas.Efes.Common.GibModel
+{
+    public class ElementList
+    {
+        [XmlElement("Invoice", Namespace = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2")]
+        public Invoice Invoice { get; set; }
+
+        
+        public ProcessUserAccount ProcessUserAccount { get; set; }
+    }
+}

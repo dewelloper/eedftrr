@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2CD3F4B4-D7FA-40FB-8657-9A8693BAEA4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlas.Efes.DataContext</RootNamespace>
+    <AssemblyName>Atlas.Efes.DataContext</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDataContext.cs" />
+    <Compile Include="EnvelopeLogDataContext.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="PartyInfoDataContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDataContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atlas.Efes.Common\Atlas.Efes.Common.csproj">
+      <Project>{bc1f5cef-883e-4778-8ae8-f82bfb8c1db8}</Project>
+      <Name>Atlas.Efes.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.Core\Atlas.Efes.Core.csproj">
+      <Project>{a5ed81ce-1041-4898-8965-69a007cb70f3}</Project>
+      <Name>Atlas.Efes.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.GIBModel\Atlas.Efes.GIBModel.csproj">
+      <Project>{9ff52f88-b4b1-4764-9a60-23081e2a53bc}</Project>
+      <Name>Atlas.Efes.GIBModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlas.Efes.OracleClient\Atlas.Efes.OracleClient.csproj">
+      <Project>{df848509-dcf3-4794-80b2-2c9740a055ab}</Project>
+      <Name>Atlas.Efes.OracleClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

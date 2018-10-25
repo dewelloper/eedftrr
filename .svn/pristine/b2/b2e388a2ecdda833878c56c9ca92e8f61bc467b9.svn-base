@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <system.serviceModel>
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true" />
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="SenderBehaviour">
+          <serviceMetadata httpGetEnabled="false" httpsGetEnabled="true" />
+        </behavior>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="false" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="EFaturaSoapBinding" messageEncoding="Mtom">
+          <security mode="Transport">
+            <transport clientCredentialType="None" />
+          </security>
+        </binding>
+        <binding name="SenderConfig">
+          <security mode="Transport" />
+        </binding>
+        <binding name="SignatureWSPortBinding" messageEncoding="Mtom" />
+      </basicHttpBinding>
+    </bindings>
+
+    <client>
+      <endpoint address="http://merkeztest.efatura.gov.tr/EFaturaMerkez/services/EFatura"
+        binding="basicHttpBinding" bindingConfiguration="EFaturaSoapBinding"
+        contract="GIBServiceProxy.EFaturaPortType" name="EFaturaSoap12" />
+      <endpoint address="http://176.53.37.197:8080//SignServer/SignatureWS"
+        binding="basicHttpBinding" bindingConfiguration="SignatureWSPortBinding"
+        contract="SignatureServiceProxy.SignatureWS" name="SignatureWSPort" />
+    </client>
+
+    <services>
+      <service behaviorConfiguration="SenderBehaviour"
+            name="Atlas.Efes.SenderIntegrationService.SenderIntegrationService">
+        <endpoint
+          address=""
+          binding="basicHttpBinding"
+          bindingConfiguration="SenderConfig"
+          name="SenderUnitService"
+          contract="Atlas.Efes.SenderIntegrationService.ISenderIntegrationService" />
+
+        <endpoint address="mex"
+                binding="mexHttpsBinding"
+                contract="IMetadataExchange" />
+        <host>
+          <baseAddresses>
+            <add baseAddress="https://efaturaint.atlasyazilim.com.tr/Services/SenderIntegrationService.svc" />
+          </baseAddresses>
+        </host>
+      </service>
+
+    </services>
+  </system.serviceModel>
+
+</configuration>

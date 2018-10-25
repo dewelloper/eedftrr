@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://services.signserver.ebg.tr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="SignatureWS" targetNamespace="http://services.signserver.ebg.tr/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="SignatureWSPortBindingPolicy">
+    <ns1:OptimizedMimeSerialization xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://176.53.37.197:8080//SignServer/SignatureWS?xsd=1" namespace="http://services.signserver.ebg.tr/" />
+    </xsd:schema>
+  </types>
+  <message name="verify">
+    <part name="parameters" element="tns:verify" />
+  </message>
+  <message name="verifyResponse">
+    <part name="parameters" element="tns:verifyResponse" />
+  </message>
+  <message name="sign">
+    <part name="parameters" element="tns:sign" />
+  </message>
+  <message name="signResponse">
+    <part name="parameters" element="tns:signResponse" />
+  </message>
+  <message name="signpdf">
+    <part name="parameters" element="tns:signpdf" />
+  </message>
+  <message name="signpdfResponse">
+    <part name="parameters" element="tns:signpdfResponse" />
+  </message>
+  <message name="signCms">
+    <part name="parameters" element="tns:signCms" />
+  </message>
+  <message name="signCmsResponse">
+    <part name="parameters" element="tns:signCmsResponse" />
+  </message>
+  <message name="Test">
+    <part name="parameters" element="tns:Test" />
+  </message>
+  <message name="TestResponse">
+    <part name="parameters" element="tns:TestResponse" />
+  </message>
+  <message name="writeNotData">
+    <part name="parameters" element="tns:writeNotData" />
+  </message>
+  <message name="writeNotDataResponse">
+    <part name="parameters" element="tns:writeNotDataResponse" />
+  </message>
+  <message name="verifyLevel">
+    <part name="parameters" element="tns:verifyLevel" />
+  </message>
+  <message name="verifyLevelResponse">
+    <part name="parameters" element="tns:verifyLevelResponse" />
+  </message>
+  <message name="timeStamp">
+    <part name="parameters" element="tns:timeStamp" />
+  </message>
+  <message name="timeStampResponse">
+    <part name="parameters" element="tns:timeStampResponse" />
+  </message>
+  <portType name="SignatureWS">
+    <operation name="verify">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/verifyRequest" message="tns:verify" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/verifyResponse" message="tns:verifyResponse" />
+    </operation>
+    <operation name="sign">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/signRequest" message="tns:sign" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/signResponse" message="tns:signResponse" />
+    </operation>
+    <operation name="signpdf">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/signpdfRequest" message="tns:signpdf" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/signpdfResponse" message="tns:signpdfResponse" />
+    </operation>
+    <operation name="signCms">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/signCmsRequest" message="tns:signCms" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/signCmsResponse" message="tns:signCmsResponse" />
+    </operation>
+    <operation name="Test">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/TestRequest" message="tns:Test" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/TestResponse" message="tns:TestResponse" />
+    </operation>
+    <operation name="writeNotData">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/writeNotDataRequest" message="tns:writeNotData" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/writeNotDataResponse" message="tns:writeNotDataResponse" />
+    </operation>
+    <operation name="verifyLevel">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/verifyLevelRequest" message="tns:verifyLevel" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/verifyLevelResponse" message="tns:verifyLevelResponse" />
+    </operation>
+    <operation name="timeStamp">
+      <input wsam:Action="http://services.signserver.ebg.tr/SignatureWS/timeStampRequest" message="tns:timeStamp" />
+      <output wsam:Action="http://services.signserver.ebg.tr/SignatureWS/timeStampResponse" message="tns:timeStampResponse" />
+    </operation>
+  </portType>
+  <binding name="SignatureWSPortBinding" type="tns:SignatureWS">
+    <wsp:PolicyReference URI="#SignatureWSPortBindingPolicy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="verify">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="sign">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="signpdf">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="signCms">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Test">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="writeNotData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="verifyLevel">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="timeStamp">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SignatureWS">
+    <port name="SignatureWSPort" binding="tns:SignatureWSPortBinding">
+      <soap:address location="http://176.53.37.197:8080//SignServer/SignatureWS" />
+    </port>
+  </service>
+</definitions>

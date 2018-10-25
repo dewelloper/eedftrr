@@ -1,0 +1,130 @@
+﻿<Window x:Class="Atlas.Efes.Manager.MasterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:igRibbon="http://infragistics.com/Ribbon"
+        xmlns:igEditors="http://infragistics.com/Editors"
+        xmlns:igThemes="http://infragistics.com/Themes"
+        xmlns:CinchV2="clr-namespace:BigCinch;assembly=BigCinch"
+        xmlns:igWindows="http://infragistics.com/Windows"    
+        xmlns:meffed="http:\\www.codeplex.com\MEFedMVVM"
+        xmlns:control="clr-namespace:Atlas.Efes.Manager.Controls"
+        meffed:ViewModelLocator.ViewModel="MasterWindowViewModel"
+        WindowStartupLocation="CenterScreen"
+        Title="Efes Manager" Height="600" Width="900">
+
+    <Window.Resources>
+        <BitmapImage  x:Key="newFileIcon" UriSource="pack://application:,,,/Atlas.Efes.Manager;component/Images/newFileIcon.png" />
+        <DataTemplate DataType="{x:Type CinchV2:WorkspaceData}">
+            <AdornerDecorator>
+                <Border HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Stretch" 
+                        CinchV2:NavProps.ViewCreator="{Binding}"/>
+            </AdornerDecorator>
+        </DataTemplate>
+    </Window.Resources>
+
+
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <igRibbon:RibbonWindowContentHost x:Name="ribbonWindowContentHost" >
+
+            <igRibbon:RibbonWindowContentHost.Ribbon>
+                <igRibbon:XamRibbon Name="ribbonMenu"  Theme="Metro"  DockPanel.Dock="Top" >
+
+
+                    <igRibbon:XamRibbon.Tabs>
+
+                        <igRibbon:RibbonTabItem Header="Invoice Process" >
+                            <igRibbon:RibbonGroup Caption="File">
+                                <igRibbon:ButtonTool Caption="New" Command="{Binding CreateInvoiceCommand}" LargeImage="{StaticResource ResourceKey=newFileIcon}" HorizontalContentAlignment="Center"  igRibbon:RibbonGroup.MaximumSize="ImageAndTextLarge"  />
+                            </igRibbon:RibbonGroup>
+                        </igRibbon:RibbonTabItem>
+
+                        <!--<igRibbon:RibbonTabItem Header="Reports">
+                        </igRibbon:RibbonTabItem>
+
+
+                        <igRibbon:RibbonTabItem Header="Accountancy">
+                        </igRibbon:RibbonTabItem>
+
+                        <igRibbon:RibbonTabItem Header="Defination" >
+                        </igRibbon:RibbonTabItem>
+
+
+                        <igRibbon:RibbonTabItem Header="System">
+
+                        </igRibbon:RibbonTabItem>-->
+
+
+                    </igRibbon:XamRibbon.Tabs>
+
+
+                    <igRibbon:XamRibbon.ApplicationMenu>
+                        <igRibbon:ApplicationMenu ToolTip="Menü"  Visibility="Hidden">
+                        </igRibbon:ApplicationMenu>
+                    </igRibbon:XamRibbon.ApplicationMenu>
+                </igRibbon:XamRibbon>
+            </igRibbon:RibbonWindowContentHost.Ribbon>
+
+        </igRibbon:RibbonWindowContentHost>
+
+
+        <ScrollViewer  VerticalScrollBarVisibility="Auto" Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
+
+            <control:TabControlEx Grid.Row="1" x:Name="tab1"
+            ItemsSource="{Binding Views}"  TabStripPlacement="Left"
+                        CinchV2:NavProps.ShouldHideHostWhenNoItems="true"
+                        ItemContainerStyle="{StaticResource TabItemStyleVerticalTabs}"
+                        Style="{DynamicResource TabControlStyleVerticalTabs}" 
+                        IsSynchronizedWithCurrentItem="True" 
+                        DisplayMemberPath="DisplayText">
+
+                <control:TabControlEx.ContextMenu>
+                    <ContextMenu IsOpen="{Binding ShowContextMenu, Mode=OneWay}">
+                        <Menu x:Name="menu" Margin="0,0,0,0" Height="Auto" Foreground="Black"
+						ItemContainerStyle="{StaticResource ContextMenuItemStyle}"
+						ItemsSource="{Binding MainWindowOptions}" 
+						BorderBrush="Transparent"
+						VerticalAlignment="Top" Background="Transparent" />
+                    </ContextMenu>
+                </control:TabControlEx.ContextMenu>
+            </control:TabControlEx>
+        </ScrollViewer>
+
+        <DockPanel Grid.Row="2" Background="#FFFDC699" >
+
+            <StatusBar Margin="0" Background="#FFFDC699"  DockPanel.Dock="Bottom">
+                Kullanıcı :
+                <TextBlock Text="atartan" FontWeight="Bold" />
+
+                <Separator  />
+
+                Kullanıcı Grubu :
+                <TextBlock Text="Standart User" FontWeight="Bold" />
+
+                <Separator  />
+
+                Uygulama Sunucusu:
+                <TextBlock Text="EFATURA" FontWeight="Bold" />
+
+                <Separator  />
+
+                Uygulama Versiyonu :
+                <TextBlock Text="{Binding AppVersion}" FontWeight="Bold" />
+
+
+
+            </StatusBar>
+
+        </DockPanel>
+
+    </Grid>
+
+</Window>

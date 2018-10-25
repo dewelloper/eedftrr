@@ -1,0 +1,74 @@
+﻿using Ionic.Zip;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
+
+namespace Atlas.Efes.Core
+{
+    public class FileProcess
+    {
+        public static byte[] CreateZipFile(string sourceFileName, string destFileName)
+        {
+            using (var zip = new Ionic.Zip.ZipFile())
+            {
+
+                zip.AddFile(sourceFileName, string.Empty);
+                zip.Save(destFileName);
+            }
+
+            byte[] zipfile = File.ReadAllBytes(destFileName);
+            return zipfile;
+        }
+
+
+        public static void SaveByteArray(string path, byte[] array)
+        {
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                stream.Write(array, 0, array.Length);
+            }
+        }
+
+
+        public static void WriteBasicLog(string path, string message)
+        {
+            if (!File.Exists(path))
+            {
+                File.Create(path).Close();
+            }
+
+            message = message + "\n";
+
+            File.AppendAllText(path, message, Encoding.UTF8);
+        }
+
+        public static XmlDocument LoadXmlFromZip(string filePath)
+        {
+            List<string> contents = new List<string>();
+            using (ZipFile zipFile = ZipFile.Read(filePath))
+            {
+                foreach (ZipEntry theEntry in zipFile)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        theEntry.Extract(ms);
+                        ms.Position = 0;
+                        var sr = new StreamReader(ms);
+                        var myStr = sr.ReadToEnd();
+                        contents.Add(myStr);
+                    }
+                }
+            }
+
+            string xmlString = contents[0].ToString();
+
+            XmlDocument document = new XmlDocument();
+            document.LoadXml(xmlString);
+
+            return document;
+        }
+    }
+}
